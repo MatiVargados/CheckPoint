@@ -10,7 +10,7 @@
 ### Frontend
 - HTML, CSS y JavaScript
 - Responsive Design
-- Temas Claro / Oscuro con persistencia
+- Temas Claro / Oscuro
 - Paginación y manejo de estado con JavaScript
 
 ### Backend

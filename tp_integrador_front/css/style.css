@@ -1,0 +1,13 @@
+/* ///////////////// 
+     Header
+///////////////// */
+
+nav ul {
+  border: 2px solid #e3bc5e;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  list-style-type: none;
+}

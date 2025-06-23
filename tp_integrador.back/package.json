@@ -1,0 +1,30 @@
+{
+  "name": "practica_clase",
+  "version": "1.0.0",
+  "main": "notas.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "- Proyecto para la materia **Programación III**, correspondiente a la **division 131** por los estudiantes **Juan Ullua** y **Matias Vargados**. \r - Este sistema simula un autoservicio, compuesto por una aplicación **frontend para clientes** y un **backend con API REST y panel de administración**.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatiVargados/self-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatiVargados/self-service/issues"
+  },
+  "homepage": "https://github.com/MatiVargados/self-service#readme"
+}
