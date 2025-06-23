@@ -9,7 +9,7 @@ const app = express();
 
 ////////////////////
 // Middlewares //
-app.use(cors()); // Middleware CORS basico que permite todas las solicitudes
+//app.use(cors()); // Middleware CORS basico que permite todas las solicitudes
 
 
 //RUTAS//
@@ -40,5 +40,6 @@ app.get("/products", async (req, res) => {
     }
 })
 app.listen(port, () =>{
-    console.log("Servidor corriendo en el puerto ${port}");
+    console.log(`Servidor corriendo en el puerto ${port}`);
+    console.log(`link: http://localhost:${port}`);
 });
