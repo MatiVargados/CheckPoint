@@ -5,9 +5,15 @@
 
 body {
     background-color: rgb(255, 255, 255);
-
     color: rgb(0, 0, 0);
 }
+
+body video{
+    position: fixed;
+    object-fit: cover;
+    z-index: -1;
+}
+
 .inicio-sesion{
     display: flex; 
     justify-content: center; 
@@ -22,7 +28,7 @@ body {
     flex-direction: column;
     gap: 10px;
     
-    background-color: rgba(255, 255, 255, 0.2); /* blanco con transparencia */
+    background-color: rgba(255, 255, 255, 0.37); /* blanco con transparencia */
     backdrop-filter: blur(10px); /* desenfoque */
 
     border-radius: 8px;
@@ -47,5 +53,16 @@ body {
 
 .inicio-sesion div button{ 
     font-size: 120%;
-    width: 70%;
+    width: 50%;
+    height: 50px;
+
+    border-radius: 8px;
+    background-color: beige;
+    transition: background-color 1s ease;
 }
+
+.inicio-sesion div button:hover{ 
+    background-color: rgb(134, 134, 126);
+}
+
+
