@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255); /*rgb(53, 50, 46)*/
     color: rgb(0, 0, 0);
 }
 
@@ -26,14 +26,15 @@ body video{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
     
-    background-color: rgba(255, 255, 255, 0.37); /* blanco con transparencia */
+    color: white;
+    background-color: rgba(15, 4, 4, 0.37); /* blanco con transparencia */
     backdrop-filter: blur(10px); /* desenfoque */
 
     border-radius: 8px;
-    width: 30%;
-    height: 200px;
+    width: 15%;
+    height: 300px;
     padding: 10px;
 }
 
@@ -43,6 +44,7 @@ body video{
 }
 
 #nombre-usuario{
+    font-size: 20px;
     text-align: center;
     border-radius: 4px;
     border: none;
@@ -51,18 +53,68 @@ body video{
     margin-bottom: 10px;
 }
 
-.inicio-sesion div button{ 
-    font-size: 120%;
-    width: 50%;
-    height: 50px;
+.boton-inicio{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    color: black;
+    font-size: 120%;
+    text-decoration: none;
+
+    width: 75%;
+    height: 50px;
     border-radius: 8px;
-    background-color: beige;
+    
+    background-color: rgba(247, 247, 212, 0.432);
     transition: background-color 1s ease;
 }
 
-.inicio-sesion div button:hover{ 
-    background-color: rgb(134, 134, 126);
+.boton-inicio:hover{ 
+    background-color: rgb(241, 241, 227);
 }
 
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: rgb(53, 50, 46);
+}
+
+.header img {
+
+    margin: 10px;
+    width: 200px;
+}
+
+.header input {
+    width: 40%;
+    height: 25px; 
+    font-size: 14px;
+    padding: 5px;
+
+    color: white;
+    background-color: rgb(53, 50, 46);
+    border: 1px solid rgb(187, 27, 27);
+    border-radius: 4px;
+
+    transition: border 1s ease;
+}
+
+.header input:hover{
+    border: 2px solid rgb(255, 233, 233);
+}
+
+.saludo-usuario{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    
+    
+    font-size: 20px;
+    background-color: rgb(53, 50, 46);
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgb(187, 27, 27);
+}
 
