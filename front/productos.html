@@ -29,15 +29,82 @@
 
         </div>
 
-        <div class="navegator-menu">
-
-        </div>
-
         <div class="productos">
 
+            <section id="selector-catalogo">
+                <button onclick="elegirCatalogo(`juegos`)">Video Juegos</button>
+                <button onclick="elegirCatalogo(`consolas`)">Consolas</button>
+            </section>
+
+            <section>
+                <ul id="contenedor-productos">
+                    <li class="tarjeta-producto">
+                        <img src="/front/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
+                        <h1>Rojo Fuego</h3>
+                        <p>$200</p>
+                        <button>Agregar al Carrito</button>
+                    </li>
+
+                    <li class="tarjeta-producto">
+                        <img src="/front/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
+                        <h1>Rojo Fuego</h3>
+                        <p>$200</p>
+                        <button>Agregar al Carrito</button>
+                    </li>
+
+                    <li class="tarjeta-producto">
+                        <img src="/front/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
+                        <h1>Rojo Fuego</h3>
+                        <p>$200</p>
+                        <button>Agregar al Carrito</button>
+                    </li>
+
+                    <li class="tarjeta-producto">
+                        <img src="/front/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
+                        <h1>Rojo Fuego</h3>
+                        <p>$200</p>
+                        <button>Agregar al Carrito</button>
+                    </li>
+                    
+                </ul>
+            </section>
+
         </div>
 
-        <script defer src="">
+        <script> 
+        /* por ahora esta funcion es estetica | mas adelante hay que llevarla a un archivo js para que no solamente cambie lo estetico sino
+        que tambien pueda cambiar los objetos que se muestran*/
+            
+            let contenedorBotones = document.getElementById("selector-catalogo");
+
+            let nuevoHtml = ""
+
+            function elegirCatalogo(catalogo) {
+
+                // para cuando hagamos el cambio de objetos entre juegos y consolas podriamos hacer que se meta toda la tablar del sql en la lista que se vaya a mostrar
+                switch (catalogo) {
+                    case "juegos":
+                        nuevoHtml = `
+                            <button style="border-bottom: 2px solid black;" onclick="elegirCatalogo('juegos')">Video Juegos</button> 
+                            <button onclick="elegirCatalogo('consolas')">Consolas</button>
+                        `;
+                        /* Ejemplo 
+                        - esta funcion podria mostrar la ruta fetch e ir cambiandola 
+                        let rutaUrlFetch = "http://localhost:3000/api/productos/juegos" 
+                        */
+                        break;
+
+                    case "consolas":
+                        nuevoHtml = `
+                            <button onclick="elegirCatalogo('juegos')">Video Juegos</button> 
+                            <button style="border-bottom: 2px solid black;" onclick="elegirCatalogo('consolas')">Consolas</button>
+                        `;
+                        // let rutaUrlFetch = "http://localhost:3000/api/productos/consolas"
+                        break;
+                }
+
+                contenedorBotones.innerHTML = nuevoHtml;
+            }
 
         </script>
     </body>

@@ -40,7 +40,7 @@ body video{
 
 .inicio-sesion div p{
     margin: 0px 0px 0px 0px;
-    font-size: 190%;
+    font-size: 160%; /* Eso hay que hacerlo responsive*/
 }
 
 #nombre-usuario{
@@ -118,3 +118,77 @@ body video{
     border: 2px solid rgb(187, 27, 27);
 }
 
+.productos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#selector-catalogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%
+}
+
+#selector-catalogo button{
+    font-size: 150%;
+    margin-top: 10px;
+    padding: 1% 5% 1% 5%;
+    margin-bottom: 10px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid transparent;
+    transition: border 1s ease;
+}
+
+#selector-catalogo button:hover{
+    border-bottom: 2px solid black;
+}
+
+#contenedor-productos{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tarjeta-producto{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 15%;
+    padding: 10px;
+    margin: 30px 0px 0px 0px;
+    border: 2px solid black;
+
+}
+
+.tarjeta-producto img{
+    width: 100%;
+    border: 2px solid black;
+}
+
+.tarjeta-producto h1{
+    font-size: 150%;
+}
+
+.tarjeta-producto p{
+    font-size: 150%;
+}
+
+.tarjeta-producto button{
+    width: 90%;
+    font-size: 150%;
+    margin-top: 10px;
+    padding: 1% 5% 1% 5%;
+
+    background-color: transparent;
+    border: 1px solid black;
+    transition: background-color 1s ease;
+}
+
+.tarjeta-producto button:hover{
+    background-color: rgb(196, 196, 196);
+}
