@@ -12,3 +12,6 @@ export default{
     }
 
 }
+
+//para probar si conectaba a la db
+console.log('DB_USER:', process.env.DB_USER);
