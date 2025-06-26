@@ -39,7 +39,7 @@ body video{
 }
 
 .inicio-sesion div p{
-    margin: 0px 0px 0px 0px;
+    background-color: transparent;
     font-size: 160%; /* Eso hay que hacerlo responsive*/
 }
 
@@ -96,7 +96,7 @@ body video{
 
     color: white;
     background-color: rgb(53, 50, 46);
-    border: 1px solid rgb(187, 27, 27);
+    border: 1px solid rgb(166, 38, 32);
     border-radius: 4px;
 
     transition: border 1s ease;
@@ -115,7 +115,7 @@ body video{
     background-color: rgb(53, 50, 46);
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid rgb(187, 27, 27);
+    border: 2px solid rgb(166, 38, 32);
 }
 
 .productos {
@@ -191,4 +191,70 @@ body video{
 
 .tarjeta-producto button:hover{
     background-color: rgb(196, 196, 196);
+}
+
+.contenedor-carrito-logo{
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-carrito-logo img{
+    width: 250px;
+}
+
+#contenedor-carrito-productos ul{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tarjeta-carrito{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 80%;
+    border-radius: 10px;
+    padding: 10px;
+
+    background-color: rgb(53, 50, 46);
+    color: white;
+}
+
+.tarjeta-carrito img {
+    width: 10%;
+    padding: 3px;
+    background-color: rgb(166, 38, 32);
+}
+
+.tarjeta-carrito h1, h3, p{
+    font-size: 200%;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: rgb(166, 38, 32);
+}
+
+.tarjeta-carrito div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    background-color: rgb(166, 38, 32);
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.tarjeta-carrito div button{
+    font-size: 150%;
+    color: rgb(53, 50, 46);
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgb(166, 38, 32);
+    transition: color 0.5s ease;
+}
+
+.tarjeta-carrito div button:hover{
+    color: white;
 }
