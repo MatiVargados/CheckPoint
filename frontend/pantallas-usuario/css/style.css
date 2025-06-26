@@ -271,3 +271,99 @@ body video{
 .tarjeta-carrito div button:hover{
     color: white;
 }
+
+
+/*PARTE DE ADMIN*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general */
+body {
+    font-family: sans-serif;
+    background-color: white;
+    color: black;
+}
+
+/* Barra de navegación */
+header {
+    background-color: rgb(53, 50, 46);
+    padding: 10px 0;
+}
+
+#listado-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+#listado-nav a {
+    text-decoration: none;
+}
+
+.links-header {
+    background-color: rgba(247, 247, 212, 0.432);
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.links-header:hover {
+    background-color: rgb(241, 241, 227);
+}
+
+/* Título */
+.titulo {
+    text-align: center;
+    font-size: 180%;
+    margin: 20px;
+}
+
+/* Contenedor principal */
+#contenedor-get {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+
+/* Lista de productos */
+#productos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Estilo individual de cada producto */
+.li-listados {
+    border: 2px solid black;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.li-listados img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.li-listados p {
+    font-size: 110%;
+}

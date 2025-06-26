@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="description" content="CheckPoint"> 
+        <meta name="author" content="Juan Ullua y Matias Vargados">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+        <link rel="stylesheet" href="./css/style.css">
+
+        <title>CheckPoint</title> 
+        
+    </head>
+
+<body>
+    <header>
+            <ul id="listado-nav">
+                <a href="index.html">
+                    <li class="links-header"><span>GET</span></li>
+                </a>
+                
+                <a href="get.html">
+                    <li class="links-header"><span>Get : id</span></li>
+                </a>
+                <a href="post.html">
+                    <li class="links-header"><span>POST</span></li>
+                </a>
+                
+                <a href="put.html">
+                    <li class="links-header"><span>PUT</span></li>
+                </a>
+                <a href="delete.html">
+                    <li class="links-header"><span>DELETE</span></li>
+                </a>
+            </ul>
+
+    </header>
+
+    <hr>
+    <h1 class="titulo">Listado de productos</h1>
+    <hr>
+
+    <main id="contenedor-get">
+        <div id="productos-container">
+            <ul id="productos-lista">
+                <!--
+                <li class="li-listados productos-listados">
+                    <img src="" alt="" class="img-listados">
+                    <p>Id: / Nombre: / <strong>Precio: </strong></p>
+                </li>
+                -->
+            </ul>
+        </div>
+    </main>
+
+    <!-- Por tema legibilidad, temporalmente, dejaremos el JavaScript aca -->
+    <script>
+        /* Metodo 1 con promesas
+        // Traer producatos con fetch
+        fetch("http://localhost:3000/products") // Realizamos una solicitud HTTP Get a la url
+            .then(respuesta => respuesta.json()) // Convertimos la respuesta a un objeto JavaScript
+            .then(data => { // Ya disponemos de los datos prodcesados
+                console.log(data); // Visualizamos los datos por consola
+                mostrarProductos(data);
+            })
+            .catch(error => console.error("Error", error));
+        */ 
+
+        // Metodo 2 con async await
+        async function obtenerDatosProductos() {
+            try {
+                // Esperamos la respuesta de la peticion fetch
+                let respuesta = await fetch("http://localhost:3000/products");
+                console.log(respuesta);
+
+                // Esperamos a convertir a objetos JS
+                let datos = await respuesta.json();
+                console.log(datos);
+                
+                mostrarProductos(datos);
+
+            } catch(error) {
+                console.error("Error:", error);
+            }
+        }
+
+
+        function mostrarProductos(array) {
+            let listaProductos = array.payload; // Aca guardamos directamente el array de productos, gracias a que la respuesta fue exitosa
+            console.table(listaProductos);
+
+            let productos_lista = document.getElementById("productos-lista");
+            let htmlProductos = "";
+
+            listaProductos.forEach(producto => {
+                htmlProductos += `
+                    <li class="li-listados productos-listados">
+                        <img src="${producto.image}" alt="${producto.name}" class="img-listados">
+                        <p>Id: ${producto.id} / Nombre: ${producto.name} / <strong>Precio: ${producto.price}$</strong></p>
+                    </li>
+                `
+            });
+
+            productos_lista.innerHTML = htmlProductos;
+        }
+
+        obtenerDatosProductos();
+
+    </script>
+</body>
+</html>
