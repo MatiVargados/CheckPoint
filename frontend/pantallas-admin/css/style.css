@@ -1,94 +1,72 @@
-/*PARTE DE ADMIN*/
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* /////////////
+    Estilos globales
+///////////// */
+h1 {
+    text-align: center;
 }
 
-/* Estilo general */
-body {
-    font-family: sans-serif;
-    background-color: white;
-    color: black;
-}
 
-/* Barra de navegación */
-header {
-    background-color: rgb(53, 50, 46);
-    padding: 10px 0;
-}
+/* /////////////
+    Header
+///////////// */
 
 #listado-nav {
+    border: 2px solid #e3bc5e;
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    list-style: none;
-    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-#listado-nav a {
-    text-decoration: none;
+#listado-nav li {
+    list-style-type: none;
 }
 
-.links-header {
-    background-color: rgba(247, 247, 212, 0.432);
-    border: 2px solid black;
-    border-radius: 8px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-.links-header:hover {
-    background-color: rgb(241, 241, 227);
-}
 
-/* Título */
-.titulo {
-    text-align: center;
-    font-size: 180%;
-    margin: 20px;
-}
-
-/* Contenedor principal */
-#contenedor-get {
-    display: flex;
-    justify-content: center;
-    margin: 40px;
-}
-
-/* Lista de productos */
-#productos-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    list-style: none;
-    width: 90%;
-    max-width: 1000px;
-}
-
-/* Estilo individual de cada producto */
+/* /////////////
+    index
+///////////// */
 .li-listados {
-    border: 2px solid black;
-    padding: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #e3bc5e;
+    font-size: 16px;
+    padding-right: 10px;
+    border-radius: 3px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-.li-listados img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border: 2px solid black;
-    border-radius: 6px;
+.productos-listados {
+    justify-content: space-between;
 }
 
-.li-listados p {
-    font-size: 110%;
+.img-listados {
+    width: 65px;
+}
+
+
+/* ===============================
+        LISTADOS DINAMICOS
+================================== */
+
+.li-listados_boton {
+    width: 25%;
+}
+
+.li-listados_datos p, .listados_boton {
+    margin: 0 !important;
+}
+
+.li-listados_datos {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    align-items: center;
+}
+
+
+#updateForm-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 60px;
 }

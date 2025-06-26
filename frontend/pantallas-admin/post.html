@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="description" content="CheckPoint">
+    <meta name="author" content="Juan Ullua y Matias Vargados">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css">
+    <title>CheckPoint</title>
+  </head>
+  <body>
+    <!-- menú -->
+    <header>
+        <ul id="listado-nav">
+            <a href="admin.html"><li class="links-header"><span>Inicio</span></li></a>
+            <a href="post.html"><li class="links-header"><span>Subir</span></li></a>
+            <a href="put.html"><li class="links-header"><span>Actualizar</span></li></a>
+            <a href="delete.html"><li class="links-header"><span>Eliminar</span></li></a>
+        </ul>
+    </header>
+
+    <hr>
+    <h1 class="titulo">Crear producto nuevo</h1>
+    <hr>
+
+    <!-- formulario ADD -->
+    <main id="contenedor-get">
+      <form id="form-add" class="formulario">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="text" name="image" placeholder="URL de la imagen" required>
+        <input type="number" name="price" placeholder="Precio" required>
+        <input type="text" name="category" placeholder="Categoría" required>
+        <button type="submit">Agregar</button>
+      </form>
+    </main>
+
+    <!-- script ADD -->
+    <script>
+      document.getElementById("form-add").addEventListener("submit", async e => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        await fetch("http://localhost:3000/products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        alert("Producto agregado");
+        window.location.href = 'admin.html';
+      });
+    </script>
+</body>
+</html>

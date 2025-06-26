@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="description" content="CheckPoint"> 
+        <meta name="author" content="Juan Ullua y Matias Vargados">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css">
+
+        <title>CheckPoint</title> 
+    </head>
+
+<body>
+    <!-- menú de navegación igual -->
+    <header>
+        <ul id="listado-nav">
+            <a href="admin.html"><li class="links-header"><span>Inicio</span></li></a>
+            <a href="post.html"><li class="links-header"><span>Subir</span></li></a>
+            <a href="put.html"><li class="links-header"><span>Actualizar</span></li></a>
+            <a href="delete.html"><li class="links-header"><span>Eliminar</span></li></a>
+        </ul>
+    </header>
+
+    <hr>
+    <h1 class="titulo">Obtener producto por ID</h1>
+    <hr>
+
+    <!-- form para meter el ID -->
+    <form id="form-get-id" class="formulario">
+        <input type="number" name="id" placeholder="ID del producto" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- aquí aparece el detalle (oculto al inicio) -->
+    <div id="producto-detalle" style="display:none;" class="formulario">
+        <img src="" alt="" class="img-listados">
+        <p id="detalle-info"></p>
+        <div class="acciones">
+            <button id="btn-edit">Editar</button>
+            <button id="btn-delete">Eliminar</button>
+        </div>
+    </div>
+
+    <script>
+        // cuando busco por ID...
+        document.getElementById("form-get-id").addEventListener("submit", async e => {
+            e.preventDefault();
+            const { id } = Object.fromEntries(new FormData(e.target));
+            try {
+                const res = await fetch(`http://localhost:3000/products/${id}`);
+                if (!res.ok) throw new Error('no encontrado');
+                const p = await res.json(); // asumimos que devuelve el objeto
+                // lleno detalle
+                const img = document.querySelector('#producto-detalle img');
+                img.src = p.image;
+                img.alt = p.name;
+                document.getElementById('detalle-info').textContent = `Id: ${p.id} / Nombre: ${p.name} / Precio: ${p.price}$`;
+                // muestro contenedor
+                document.getElementById('producto-detalle').style.display = 'flex';
+                // botón editar redirige a put con query
+                document.getElementById('btn-edit').onclick = () => {
+                    window.location.href = `put.html?id=${p.id}`;
+                };
+                // botón elimina directo y refresca
+                document.getElementById('btn-delete').onclick = async () => {
+                    await fetch(`http://localhost:3000/products/${p.id}`, { method: 'DELETE' });
+                    alert('Producto eliminado');
+                    window.location.reload();
+                };
+            } catch(err) {
+                alert('Producto no encontrado');
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>

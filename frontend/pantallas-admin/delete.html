@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="description" content="CheckPoint">
+    <meta name="author" content="Juan Ullua y Matias Vargados">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css">
+    <title>CheckPoint</title>
+  </head>
+  <body>
+    <!-- menú -->
+    <header>
+        <ul id="listado-nav">
+            <a href="admin.html"><li class="links-header"><span>Inicio</span></li></a>
+            <a href="post.html"><li class="links-header"><span>Subir</span></li></a>
+            <a href="put.html"><li class="links-header"><span>Actualizar</span></li></a>
+            <a href="delete.html"><li class="links-header"><span>Eliminar</span></li></a>
+        </ul>
+    </header>
+
+    <hr>
+    <h1 class="titulo">Eliminar producto</h1>
+    <hr>
+
+    <!-- form para ID antes de eliminar -->
+    <form id="form-get-id" class="formulario">
+      <input type="number" name="id" placeholder="ID del producto" required>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <!-- detalle y botón ocultos -->
+    <div id="form-delete-container" class="formulario" style="display:none;">
+      <img src="" alt="" class="img-listados">
+      <p id="delete-info"></p>
+      <button id="btn-delete">Confirmar eliminación</button>
+    </div>
+
+    <script>
+      document.getElementById("form-get-id").addEventListener("submit", async e => {
+        e.preventDefault();
+        const { id } = Object.fromEntries(new FormData(e.target));
+        try {
+          const res = await fetch(`http://localhost:3000/products/${id}`);
+          if (!res.ok) throw new Error();
+          const p = await res.json();
+          const img = document.querySelector('#form-delete-container .img-listados');
+          img.src = p.image; img.alt = p.name;
+          document.getElementById('delete-info').textContent = `Id: ${p.id} / Nombre: ${p.name} / Precio: ${p.price}$`;
+          const cont = document.getElementById('form-delete-container');
+          cont.style.display = 'flex';
+          document.getElementById('btn-delete').onclick = async () => {
+            await fetch(`http://localhost:3000/products/${p.id}`, { method: 'DELETE' });
+            alert('Producto eliminado');
+            window.location.href = 'admin.html';
+          };
+        } catch(err) {
+          alert('Producto no encontrado');
+        }
+      });
+    </script>
+</body>
+</html>
