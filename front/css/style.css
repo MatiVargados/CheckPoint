@@ -176,6 +176,7 @@ body video{
 
 .tarjeta-producto p{
     font-size: 150%;
+    background-color: transparent;
 }
 
 .tarjeta-producto button{
