@@ -1,5 +1,5 @@
 {
-  "name": "practica_clase",
+  "name": "tp_checkpoint",
   "version": "1.0.0",
   "main": "notas.js",
   "type": "module",
@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "- Proyecto para la materia **Programación III**, correspondiente a la **division 131** por los estudiantes **Juan Ullua** y **Matias Vargados**. \r - Este sistema simula un autoservicio, compuesto por una aplicación **frontend para clientes** y un **backend con API REST y panel de administración**.",
   "dependencies": {
     "cors": "^2.8.5",
