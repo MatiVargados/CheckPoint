@@ -191,6 +191,13 @@
           return;
         }
 
+        if (Number(data.precio) < 0) {
+          alert("el precio no puede ser negativo");
+          return res.status(400).json({
+              message: "El precio no puede ser negativo"
+          });
+        }
+
         try {
           let response = await fetch(`${url}/productos`, {
             method: "PUT",
