@@ -1,53 +1,113 @@
 <!DOCTYPE html>
 <html>
   <head>
+    
     <meta charset="UTF-8">
     <meta name="keywords" content="HTML, CSS">
     <meta name="description" content="CheckPoint">
     <meta name="author" content="Juan Ullua y Matias Vargados">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kimeiga/bahunya@css/bahunya-0.1.3.css" />
+    <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css"/>
+    
     <title>CheckPoint</title>
+
   </head>
   <body>
-    <!-- menú -->
+    <!-- menú principal -->
     <header>
         <ul id="listado-nav">
-            <a href="admin.html"><li class="links-header"><span>Inicio</span></li></a>
-            <a href="post.html"><li class="links-header"><span>Subir</span></li></a>
-            <a href="put.html"><li class="links-header"><span>Actualizar</span></li></a>
-            <a href="delete.html"><li class="links-header"><span>Eliminar</span></li></a>
+          <li class="links-header"><a href="admin.html"><span>Inicio</span></a></li>
+          <li class="links-header"><a href="get.html"><span>ID</span></a></li>
+          <li class="links-header"><a href="post.html"><span>Post</span></a></li>
+          <li class="links-header"><a href="put.html"><span>Put</span></a></li>
+          <li class="links-header"><a href="delete.html"><span>Delete</span></a></li>
         </ul>
     </header>
 
     <hr>
-    <h1 class="titulo">Crear producto nuevo</h1>
+    <h1 class="titulo">Crear Productos</h1>
     <hr>
 
-    <!-- formulario ADD -->
-    <main id="contenedor-get">
-      <form id="form-add" class="formulario">
-        <input type="text" name="name" placeholder="Nombre" required>
-        <input type="text" name="image" placeholder="URL de la imagen" required>
-        <input type="number" name="price" placeholder="Precio" required>
-        <input type="text" name="category" placeholder="Categoría" required>
-        <button type="submit">Agregar</button>
-      </form>
-    </main>
+    <div id="altaProducts-container" class="crudForm-container">
+      <h2>Alta producto</h2>
+      <form id="altaProducts-form" autocomplete="off">
 
-    <!-- script ADD -->
+        <label for="nombreProd">Nombre</label>
+        <input type="text" name="nombre" id="nombreProd" required>
+
+        <label for="imagenProd">Imagen</label>
+        <input type="text" name="imagen" id="imagenProd" required>
+
+        <label for="categoryProd">Categoría</label>
+        <select name="categoria" id="categoryProd" required>
+          <option style="color:black;" value="juegos">Juegos</option>
+          <option style="color:black;" value="consolas">Consolas</option>
+        </select>
+
+        <label for="precioProd">Precio</label>
+        <input type="number" name="precio" id="precioProd" required>
+
+        <label for="activoProd">Activo</label>
+        <select name="activo" id="activoProd" required>
+          <option style="color:black;" value="1">Si</option>
+          <option style="color:black;" value="0">No</option>
+        </select>
+
+        <input type="submit" value="Crear producto">
+      </form>
+    </div>
+
+
     <script>
-      document.getElementById("form-add").addEventListener("submit", async e => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(e.target));
-        await fetch("http://localhost:3000/products", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-        alert("Producto agregado");
-        window.location.href = 'admin.html';
+      let altaProducts_form = document.getElementById("altaProducts-form");
+
+      altaProducts_form.addEventListener("submit", async (event) => {
+
+        event.preventDefault(); // sin esto se arruina la ainformacion
+
+        // Como obtenemos y almacenamos la informacion de un formulario en js?
+        let formData = new FormData(event.target);
+        
+        // Transformamos nuestro objeto FormData en un objeto normal JS
+        let data = Object.fromEntries(formData.entries());
+        console.log(data);
+        console.table(data);
+
+        if (!data.nombre || !data.imagen || !data.precio){
+          alert("Todos los campos son obligatorios");
+          return;
+        }
+
+        try {
+          let response = await fetch(`http://localhost:3000/productos`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          });
+          
+          if (response.ok) {
+            console.log(response);
+
+            let resultado = await response.json();
+            console.log(resultado.menssage);
+            alert(resultado.menssage);
+
+          } else {
+            let error = await response.json();
+            console.log("Error:", error.message);
+          }
+
+        } catch (error) {
+          console.error("Error al enviar los datos", error);
+          alert("Error al procesar la solicitud")
+        }
+
       });
+
     </script>
 </body>
 </html>

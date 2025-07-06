@@ -1,78 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="keywords" content="HTML, CSS">
-        <meta name="description" content="CheckPoint"> 
-        <meta name="author" content="Juan Ullua y Matias Vargados">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="description" content="CheckPoint">
+    <meta name="author" content="Juan Ullua y Matias Vargados">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>CheckPoint</title> 
-    </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kimeiga/bahunya@css/bahunya-0.1.3.css" />
+    <link rel="stylesheet" href="/frontend/pantallas-admin/css/style.css"/>
+    
+    <title>CheckPoint</title>
 
-<body>
-    <!-- menú de navegación igual -->
+  </head>
+  <body>
+    <!-- menú principal -->
     <header>
         <ul id="listado-nav">
-            <a href="admin.html"><li class="links-header"><span>Inicio</span></li></a>
-            <a href="post.html"><li class="links-header"><span>Subir</span></li></a>
-            <a href="put.html"><li class="links-header"><span>Actualizar</span></li></a>
-            <a href="delete.html"><li class="links-header"><span>Eliminar</span></li></a>
+          <li class="links-header"><a href="admin.html"><span>Inicio</span></a></li>
+          <li class="links-header"><a href="get.html"><span>ID</span></a></li>
+          <li class="links-header"><a href="post.html"><span>Post</span></a></li>
+          <li class="links-header"><a href="put.html"><span>Put</span></a></li>
+          <li class="links-header"><a href="delete.html"><span>Delete</span></a></li>
         </ul>
     </header>
 
     <hr>
-    <h1 class="titulo">Obtener producto por ID</h1>
+    <h1 class="titulo">Productos por ID</h1>
     <hr>
 
-    <!-- form para meter el ID -->
-    <form id="form-get-id" class="formulario">
-        <input type="number" name="id" placeholder="ID del producto" required>
-        <button type="submit">Buscar</button>
-    </form>
+    <!-- lista de productos con botones -->
+    <main id="contenedor-get">
+      <div id="productos-container" class="crudForm-container">
+        <h2>Consultar Producto</h2>
+        <form id="getProduct-form">
+          <label for="idProd">ID Producto</label>
+          <input type="numero" name="idProd" id="idProd">
 
-    <!-- aquí aparece el detalle (oculto al inicio) -->
-    <div id="producto-detalle" style="display:none;" class="formulario">
-        <img src="" alt="" class="img-listados">
-        <p id="detalle-info"></p>
-        <div class="acciones">
-            <button id="btn-edit">Editar</button>
-            <button id="btn-delete">Eliminar</button>
-        </div>
+          <input type="submit" value="Consultar Producto" >
+        </form>
+      </div>
+    </main> 
+
+    <div id="getId-container">
+      <ul id="getId-lista">
+
+      </ul>
     </div>
 
     <script>
-        // cuando busco por ID...
-        document.getElementById("form-get-id").addEventListener("submit", async e => {
-            e.preventDefault();
-            const { id } = Object.fromEntries(new FormData(e.target));
-            try {
-                const res = await fetch(`http://localhost:3000/products/${id}`);
-                if (!res.ok) throw new Error('no encontrado');
-                const p = await res.json(); // asumimos que devuelve el objeto
-                // lleno detalle
-                const img = document.querySelector('#producto-detalle img');
-                img.src = p.image;
-                img.alt = p.name;
-                document.getElementById('detalle-info').textContent = `Id: ${p.id} / Nombre: ${p.name} / Precio: ${p.price}$`;
-                // muestro contenedor
-                document.getElementById('producto-detalle').style.display = 'flex';
-                // botón editar redirige a put con query
-                document.getElementById('btn-edit').onclick = () => {
-                    window.location.href = `put.html?id=${p.id}`;
-                };
-                // botón elimina directo y refresca
-                document.getElementById('btn-delete').onclick = async () => {
-                    await fetch(`http://localhost:3000/products/${p.id}`, { method: 'DELETE' });
-                    alert('Producto eliminado');
-                    window.location.reload();
-                };
-            } catch(err) {
-                alert('Producto no encontrado');
-                console.error(err);
-            }
-        });
+      let getId_lista = document.getElementById("getId-lista");
+      let getProduct_form = document.getElementById("getProduct-form");
+
+      getProduct_form.addEventListener("submit", async(event) =>{
+
+        try {
+          event.preventDefault(); // evitamos el envio por defecto del formulario
+
+          // Como obtenemos y almacenamos la informacion de un formulario en js?
+          let formData = new FormData(event.target);
+          console.log(formData);
+          
+          // Obtener informacion de un formulario html y la vamos a convetir en informacion js
+          let data = Object.fromEntries(formData.entries());
+          console.log(data); // en teoria idProd (pero no me aparece en el panel f12)
+
+          // Se almacena el valor numerico 
+          let idProd = data.idProd;
+          console.log(idProd);
+
+          let response = await fetch(`http://localhost:3000/productos/${idProd}`);
+          let datos = await response.json(); // transforma los datos en js
+          console.log(datos);
+
+          let producto = datos.payload[0]; // es el primer objeto del array
+
+          console.log(producto.imagen);
+
+          let htmlProducto =  `
+                            <li class="li-listados productos-listados">
+                              <img src="${producto.imagen}" alt="${producto.nombre}" class="img-listados">
+                              <p>Id: ${producto.id} / Nombre: ${producto.nombre}/ <strong>Precio: $  ${producto.precio}</strong></p>
+                            </li>
+                            `;
+
+          getId_lista.innerHTML = htmlProducto;
+
+        } catch (error) {
+          console.error("Error al obtener producto: ", error);
+        }
+      })
+
     </script>
 </body>
 </html>
