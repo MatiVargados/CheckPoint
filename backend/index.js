@@ -163,36 +163,36 @@ app.put("/productos", async (req, res) => {
 })
 
 // 5. Cuarto endpoint -> Delete 
-app.delete("/productos/:id", async (req, res) => {
+app.delete("/productos/:id",validateId, async (req, res) => {
     try {
         let { id } = req.params;
 
         if(!id) {
             return res.status(400).json({
-                message: "Se requiere un id para eliminar un producto"
+                message: "Se requiere un id para eliminar un productos"
             })
         }
 
-        let sql = "DELETE FROM products WHERE id = ?";
+        let sql = "DELETE FROM productos WHERE id = ?";
 
         let [result] = await connection.query(sql, [id]);
 
         // Testearmos que se eliminara
         if(result.affectedRows === 0) {
             return res.status(400).json({
-                message: `No se encontro un producto con id ${id}`
+                message: `No se encontro un productos con id ${id}`
             });
         }
 
         return res.status(200).json({
-            message: `Producto con id ${id} eliminado correctamente`
+            message: `Productos con id ${id} eliminado correctamente`
         });
 
     } catch (error) {
-        console.error("Error en DELETE /products/:id", error);
+        console.error("Error en DELETE /productos/:id", error);
 
         res.status(500).json({
-            message: `Error al eliminar producto con id ${id}`, error,
+            message: `Error al eliminar productos con id ${id}`, error,
             error: error.message
         })
     }
