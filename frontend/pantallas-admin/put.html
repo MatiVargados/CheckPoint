@@ -56,6 +56,8 @@
 
 
     <script>
+      const url = `http://localhost:3000/api`;
+
       let getId_lista = document.getElementById("getId-lista");
       let getProduct_form = document.getElementById("getProduct-form");
       let updateForm_container = document.getElementById("updateForm-container");
@@ -86,7 +88,7 @@
             throw new Error("Porfavor ingrese un id de producto valido");
           }
 
-          let response = await fetch(`http://localhost:3000/productos/${idProd}`);
+          let response = await fetch(`${url}/productos/${idProd}`);
 
           // Optimizacion 4: Manejamos el error en una posible respuesta no exitosa
           if (!response.ok) {
@@ -190,7 +192,7 @@
         }
 
         try {
-          let response = await fetch(`http://localhost:3000/productos`, {
+          let response = await fetch(`${url}/productos`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json"
