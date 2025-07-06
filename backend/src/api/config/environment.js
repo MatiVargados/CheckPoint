@@ -11,7 +11,6 @@ export default{
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD
     }
-
 }
 
 //para probar si conectaba a la db

@@ -13,7 +13,6 @@ const selectAllProductos = async() => {
 };
 
 const selectIdProductos = async(id) => {
-    // Consulta no optima, porque permite la inyeccion SQL
     let sql = "SELECT * FROM productos where id = ?";
 
     return await connection.query(sql, [id]);

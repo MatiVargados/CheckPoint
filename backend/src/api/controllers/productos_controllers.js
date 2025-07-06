@@ -55,6 +55,13 @@ const createProductos = async (req, res) => {
             });
         }
 
+        if (Number(precio) < 0) {
+            alert("el precio no puede ser negativo");
+            return res.status(400).json({
+                message: "El precio no puede ser negativo"
+            });
+        }
+
         let [rows] = await Productos.selectInsertProductos(nombre, imagen, categoria, precio, activo);
 
         res.status(201).json({
@@ -80,6 +87,13 @@ const updateProductos = async (req, res) => {
         if(!id || !categoria|| !imagen || !nombre || !precio || !activo) {
             return res.status(400).json({
                 message: "Faltan campos requeridos"
+            });
+        }
+
+        if (Number(precio) < 0) {
+            alert("el precio no puede ser negativo");
+            return res.status(400).json({
+                message: "El precio no puede ser negativo"
             });
         }
 

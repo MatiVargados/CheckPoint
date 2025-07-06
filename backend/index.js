@@ -17,5 +17,5 @@ app.use(loggerUrl);
 app.use("/api/productos", productosRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`link: http://localhost:${PORT}/api/productos`);
 })

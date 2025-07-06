@@ -13,7 +13,7 @@
   "description": "- Proyecto para la materia **Programación III**, correspondiente a la **division 131** por los estudiantes **Juan Ullua** y **Matias Vargados**. \r - Este sistema simula un autoservicio, compuesto por una aplicación **frontend para clientes** y un **backend con API REST y panel de administración**.",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.6.0",
+    "dotenv": "^16.6.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mysql2": "^3.14.1",
