@@ -45,6 +45,18 @@ app.get("/dashboard/actualizar", (req, res) =>{
     });
 });
 
+app.get("/dashboard/crear", (req,res) =>{
+    res.render("crear", {
+        title:"Crear Producto"
+    });
+});
+
+app.get("/dashboard/delete", (req, res) =>{
+    res.render("delete", {
+        title: "Eliminar Productos"
+    });
+});
+
 // Productos
 app.use("/api/productos", productosRoutes);
 
