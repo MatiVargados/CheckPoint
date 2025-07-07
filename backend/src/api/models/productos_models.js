@@ -36,7 +36,7 @@ const selectUpdateProductos = async(nombre, imagen, categoria, precio, activo, i
 
 };
 
-const selectDeleteProductos = async() => {
+const selectDeleteProductos = async(id) => {
     let sql = "DELETE FROM productos WHERE id = ?";
 
     return await connection.query(sql, [id]);

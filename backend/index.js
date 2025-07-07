@@ -35,7 +35,7 @@ app.get("/dashboard", (req, res) =>{
 
 app.get("/dashboard/buscar", (req, res) =>{
     res.render("buscar", {
-        title: "buscar productos por id"
+        title: "Buscar Producto ID"
     });
 });
 
@@ -51,8 +51,8 @@ app.get("/dashboard/crear", (req,res) =>{
     });
 });
 
-app.get("/dashboard/delete", (req, res) =>{
-    res.render("delete", {
+app.get("/dashboard/eliminar", (req, res) =>{
+    res.render("eliminar", {
         title: "Eliminar Productos"
     });
 });
