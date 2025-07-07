@@ -1,42 +1,23 @@
 // Importamos express.Router
 import { Router } from "express";
+import {vistaListado, vistaBuscarId, vistaCrear, vistaActualizar, vistaEliminar} from "../controllers/view_controllers.js"
 
 const router = Router();
 
 // Ruta de vista listado productos
-router.get("/", (req, res) =>{
-    res.render("index", {
-        title: "Listado de Productos"
-    });
-});
+router.get("/", vistaListado);
 
 // Ruta de vista consultar producto por id
-router.get("/buscar", (req, res) =>{
-    res.render("buscar", {
-        title: "buscar productos por id"
-    });
-});
+router.get("/buscar", vistaBuscarId);
 
 // Ruta de vista crear producto
-router.get("/crear", (req,res) =>{
-    res.render("crear", {
-        title:"Crear Producto"
-    });
-});
+router.get("/crear", vistaCrear);
 
 // Ruta de vista modificar producto
-router.get("/actualizar", (req, res) =>{
-    res.render("actualizar", {
-        title: "Actualizar Productos"
-    });
-});
+router.get("/actualizar", vistaActualizar);
 
 // Ruta de vista eliminar producto
-router.get("/delete", (req, res) =>{
-    res.render("delete", {
-        title: "Eliminar Productos"
-    });
-});
+router.get("/eliminar", vistaEliminar);
 
 // Exportamos las rutas de las vistas
 export default router;
