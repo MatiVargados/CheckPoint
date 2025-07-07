@@ -1,5 +1,5 @@
 /* /////////////
-Estilos globales
+    Estilos globales
 ///////////// */
 h1 {
     text-align: center;
@@ -10,24 +10,14 @@ h1 {
     Header
 ///////////// */
 
-.listado-nav {
+#listado-nav {
     border: 2px solid #e3bc5e;
     display: flex;
     justify-content: space-around;
-    padding: 5px;
 }
 
-.listado-nav li {
+#listado-nav li {
     list-style-type: none;
-}
-
-.listado-api {
-    border: 2px solid #388bfd;
-    font-size: 11px;
-}
-
-.listado-api span {
-    color: #388bfd;
 }
 
 

@@ -33,6 +33,12 @@ app.get("/dashboard", (req, res) =>{
     });
 });
 
+app.get("/dashboard/buscar", (req, res) =>{
+    res.render("buscar", {
+        title: "buscar productos por id"
+    });
+});
+
 // Productos
 app.use("/api/productos", productosRoutes);
 
