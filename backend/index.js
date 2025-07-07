@@ -2,7 +2,7 @@ import express from "express";
 import environments from "./src/api/config/environment.js";
 import cors from 'cors';
 import { loggerUrl } from "./src/api/middlewares/middlewares.js";
-import { productosRoutes } from "./src/api/routes/index.js";
+import { productosRoutes, viewRoutes } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js"
 
 const PORT = environments.port;
@@ -23,42 +23,12 @@ app.use(express.json());
 app.use(cors()); // Middleware CORS basico que permite todas las solicitudes
 app.use(loggerUrl);
 
-///////////
-// Rutas //
+//////////////
+////RUTAS/////
 
-// Vistas
-app.get("/dashboard", (req, res) =>{
-    res.render("index", {
-        title: "Listado de Productos"
-    });
-});
+app.use("/dashboard", viewRoutes); // rutas vistas
 
-app.get("/dashboard/buscar", (req, res) =>{
-    res.render("buscar", {
-        title: "Buscar Producto ID"
-    });
-});
-
-app.get("/dashboard/actualizar", (req, res) =>{
-    res.render("actualizar", {
-        title: "Actualizar Productos"
-    });
-});
-
-app.get("/dashboard/crear", (req,res) =>{
-    res.render("crear", {
-        title:"Crear Producto"
-    });
-});
-
-app.get("/dashboard/eliminar", (req, res) =>{
-    res.render("eliminar", {
-        title: "Eliminar Productos"
-    });
-});
-
-// Productos
-app.use("/api/productos", productosRoutes);
+app.use("/api/productos", productosRoutes); // rutas productos
 
 app.listen(PORT, () => {
     console.log(`link: http://localhost:${PORT}`);
