@@ -12,10 +12,10 @@ const app = express();
 app.set("view engine", "ejs");
 
 // Definimos la ruta donde estan almacenadas las plantillas .ejs con join combinamos el directorio raiz del proyecto con src/views
-app.set("views", join(__dirname), "src/views");
+app.set("views", join(__dirname, "src/views"));
 
 // Configuramos express para que sirva archivos estaticos desde la carpeta public
-app.use(express.static(join(__dirname, "src/views")));
+app.use(express.static(join(__dirname, "src/public")));
 
 ////////////////////
 // Middlewares //
@@ -25,13 +25,12 @@ app.use(loggerUrl);
 
 ///////////
 // Rutas //
-app.get("/", (req,res) => {
-    res.send("Gola mundo");
-});
 
 // Vistas
 app.get("/dashboard", (req, res) =>{
-    res.render("index");
+    res.render("index", {
+        title: "Listado de Productos"
+    });
 });
 
 // Productos
