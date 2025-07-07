@@ -1,0 +1,33 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %> 
+    
+    <hr>
+    <h1><%= title %></h1>
+    <hr>
+
+    <main id="contenedor-get">
+        
+        <div id="productos-container" class="crudForm-container">
+            <h2>Consultar producto</h2>
+
+            <form id="getProduct-form">
+            <label for="idProd">Id producto</label>
+            <input type="number" name="idProd" id="idProd">
+
+            <input type="submit" value="Consultar producto">
+            </form>
+
+        </div>
+
+        <div id="getId-container">
+            <ul id="getId-lista">
+            </ul>
+        </div>
+
+        <div id="updateForm-container">
+        
+        </div>
+
+    </main>
+
+<%- include("partials/footer") %>

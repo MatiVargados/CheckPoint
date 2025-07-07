@@ -39,6 +39,12 @@ app.get("/dashboard/buscar", (req, res) =>{
     });
 });
 
+app.get("/dashboard/actualizar", (req, res) =>{
+    res.render("actualizar", {
+        title: "Actualizar Productos"
+    });
+});
+
 // Productos
 app.use("/api/productos", productosRoutes);
 
