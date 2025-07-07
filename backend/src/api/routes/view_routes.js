@@ -1,6 +1,5 @@
 // Importamos express.Router
 import { Router } from "express";
-import { vistaConsultarId, vistaCrear, vistaEliminar, vistaListado, vistaModificar } from "../controllers/view.controllers.js";
 
 const router = Router();
 
