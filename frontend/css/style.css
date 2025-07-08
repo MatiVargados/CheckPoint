@@ -271,3 +271,18 @@ body video{
 .tarjeta-carrito div button:hover{
     color: white;
 }
+
+.mensaje-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px 0;
+}
