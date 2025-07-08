@@ -57,21 +57,36 @@ async function cargarProductos() {
     }
 }
 
-function mostrarProductosFiltrados() {
+// BARRA DE BUSQUEDA
+let barraBusqueda = document.querySelector(".barra-busqueda");
+
+barraBusqueda.addEventListener("keyup", function(){
+    let valorInput = barraBusqueda.value.toLowerCase();
+    
+    // Filtrar productos según la búsqueda y la categoría actual
+    let productosFiltrados = productosData.filter(producto => {
+        const coincideBusqueda = producto.nombre.toLowerCase().includes(valorInput);
+        const coincideCategoria = !producto.categoria || producto.categoria.toLowerCase() === catalogo;
+        return coincideBusqueda && coincideCategoria;
+    });
+    
+    // Mostrar productos filtrados
+    mostrarProductosFiltrados(productosFiltrados);
+});
+
+function mostrarProductosFiltrados(productosAMostrar = null) {
     let contenedor_productos = document.getElementById("contenedor-productos");
     let htmlProductos = "";
 
-    if (productosData.length === 0) {
+    // Si no se pasan productos específicos, usar los filtrados por categoría
+    let productosParaMostrar = productosAMostrar || productosData.filter(producto => {
+        return !producto.categoria || producto.categoria.toLowerCase() === catalogo;
+    });
+
+    if (productosParaMostrar.length === 0) {
         htmlProductos = '<li class="mensaje-error">No hay productos disponibles</li>';
     } else {
-        // Filtrar productos según la categoría seleccionada
-        const productosFiltrados = productosData.filter(producto => {
-            // Asumiendo que los productos tienen una propiedad 'categoria'
-            // Si no la tienen, mostrar todos
-            return !producto.categoria || producto.categoria.toLowerCase() === catalogo;
-        });
-
-        productosFiltrados.forEach(producto => {
+        productosParaMostrar.forEach(producto => {
             htmlProductos += `
                 <li class="tarjeta-producto">
                     <img src="${producto.imagen || '/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png'}" 

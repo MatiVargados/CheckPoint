@@ -31,5 +31,5 @@ app.use("/dashboard", viewRoutes); // rutas vistas
 app.use("/api/productos", productosRoutes); // rutas productos
 
 app.listen(PORT, () => {
-    console.log(`link: http://localhost:${PORT}`);
+    console.log(`link: http://localhost:${PORT}/dashboard`);
 })
