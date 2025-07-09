@@ -28,19 +28,32 @@ El sistema se divide en dos grandes módulos:
 ## 📦 Estructura del Proyecto
 
 ```plaintext
-/backend
-├── controllers/
-├── models/
-├── routes/
-├── views/
-├── public/
-├── .env
-└── server.js
-
-/frontend
-├── html/
-├── css/
-└── js/
+CheckPoint/
+├── backend/                    # Servidor Node.js
+│   ├── src/
+│   │   ├── api/
+│   │   │   ├── config/         # Configuración de entorno
+│   │   │   ├── controllers/    # Controladores de la API
+│   │   │   ├── database/       # Conexión a MySQL
+│   │   │   ├── middlewares/    # Middlewares personalizados
+│   │   │   ├── models/         # Modelos de datos
+│   │   │   ├── routes/         # Rutas de la API
+│   │   │   └── utils/          # Utilidades
+│   │   ├── public/             # Archivos estáticos del admin
+│   │   │   ├── css/
+│   │   │   ├── js/
+│   │   │   └── img/
+│   │   └── views/              # Plantillas EJS del admin
+│   ├── index.js               # Punto de entrada del servidor
+│   └── package.json           # Dependencias del backend
+├── frontend/                   # Aplicación cliente
+│   ├── css/                   # Estilos CSS
+│   ├── html/                  # Páginas HTML
+│   ├── js/                    # Lógica JavaScript
+│   └── elementos/             # Recursos multimedia
+│       ├── imagenes/
+│       └── video/
+└── README.md                  # Este archivo
 ```
 
 ---
