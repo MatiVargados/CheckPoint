@@ -540,25 +540,6 @@ body video{
     font-size: 16px;
 }
 
-/* Responsive para el ticket */
-@media screen and (max-width: 600px) {
-    .ticket-contenido {
-        padding: 25px;
-        margin: 10px;
-    }
-    
-    .producto-info {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-    
-    .producto-ticket {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-}
 
 @media screen and (max-width: 1500px) {
 
@@ -721,4 +702,141 @@ body video{
    .botonEliminar-carrito{
         font-size: 70%;
     }
+}
+
+/* ANIMACIONES*/
+.boton-inicio,
+.boton-vaciarCarrito,
+.boton-finalizarCompra,
+.btn-continuar,
+.tarjeta-producto button {
+    transition: all 0.3s ease;
+}
+
+.boton-inicio:hover,
+.boton-vaciarCarrito:hover,
+.boton-finalizarCompra:hover,
+.btn-continuar:hover,
+.tarjeta-producto button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones del carrito */
+.tarjeta-carrito div button {
+    transition: all 0.2s ease;
+}
+
+.tarjeta-carrito div button:hover {
+    transform: scale(1.1);
+    background-color: rgb(166, 38, 32);
+    color: white;
+}
+
+.botonEliminar-carrito {
+    transition: all 0.2s ease;
+}
+
+.botonEliminar-carrito:hover {
+    transform: scale(1.05);
+    background-color: #ff4444;
+}
+
+/* Tarjetas de productos */
+.tarjeta-producto {
+    transition: all 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-producto img {
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-producto:hover img {
+    transform: scale(1.05);
+}
+
+/* Tarjetas del carrito */
+.tarjeta-carrito {
+    transition: all 0.3s ease;
+}
+
+.tarjeta-carrito:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(166, 38, 32, 0.1);
+}
+
+/* Logo del carrito */
+#logoCarrito {
+    transition: all 0.3s ease;
+}
+
+#logoCarrito:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Animación del ticket */
+.ticket-contenido {
+    animation: aparecerTicket 0.5s ease-out;
+}
+
+@keyframes aparecerTicket {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.producto-ticket {
+    transition: all 0.2s ease;
+}
+
+.producto-ticket:hover {
+    background-color: rgba(166, 38, 32, 0.1);
+    transform: translateX(3px);
+}
+
+.producto-info img {
+    transition: transform 0.2s ease;
+}
+
+.producto-info img:hover {
+    transform: scale(1.1);
+}
+
+/* Header y navegación */
+.header img,
+.header-carrito img {
+    transition: all 0.3s ease;
+}
+
+.header img:hover,
+.header-carrito img:hover {
+    transform: scale(1.05);
+}
+
+.saludo-usuario {
+    transition: all 0.3s ease;
+}
+
+.saludo-usuario:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(166, 38, 32, 0.3);
+}
+
+#boton-cambiarTema {
+    transition: all 0.3s ease;
+}
+
+#boton-cambiarTema:hover {
+    transform: rotate(180deg) scale(1.1);
 }
