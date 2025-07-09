@@ -55,6 +55,7 @@ function mostrarTicket() {
 
 // Función para volver al inicio
 function volverAlInicio() {
+    limpiarLocalStorage();
     window.location.href = '/frontend/html/inicio.html';
 }
 
@@ -79,3 +80,9 @@ function aplicarModo(tema) {
 }
 
 aplicarModo(temaOscuroClaro); 
+
+function limpiarLocalStorage() {
+    localStorage.removeItem("nombreUsuario");
+    localStorage.removeItem("carrito");
+    localStorage.removeItem("cantidadProductosCarrito");
+}
