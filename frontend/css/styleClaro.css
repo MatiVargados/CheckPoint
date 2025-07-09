@@ -306,6 +306,7 @@ body video{
 
 .tarjeta-carrito img {
     width: 100px;
+    height: 100px;
     border: 5px solid rgb(166, 38, 32);
 } 
 
@@ -467,16 +468,6 @@ body video{
         font-size: 10px;
     }
 
-    /* TARJETA CARRITO */
-
-    .tarjeta-carrito img {
-        width: 100px;
-    } 
-
-    .tarjeta-carrito p{
-        font-size: 100%;
-    }
-
 }
 
 @media screen and (max-width: 700px) {
@@ -531,6 +522,7 @@ body video{
 
     .tarjeta-carrito img {
         width: 70px;
+        height: 70px;
     } 
 
     .tarjeta-carrito p{
@@ -558,6 +550,7 @@ body video{
 
     .tarjeta-carrito img {
         width: 50px;
+        height: 50px;
     } 
 
     .tarjeta-carrito p{
