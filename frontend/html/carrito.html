@@ -1,3 +1,16 @@
+<!--
+    ARCHIVO: carrito.html
+    
+    FUNCIÓN PRINCIPAL: Página del carrito - Gestiona los productos seleccionados
+    
+    ¿QUÉ HACE ESTA PÁGINA?
+    - Muestra todos los productos agregados al carrito
+    - Permite modificar cantidades de productos
+    - Permite eliminar productos del carrito
+    - Calcula y muestra el total de la compra
+    - Permite vaciar el carrito completo
+    - Permite finalizar la compra
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,114 +43,14 @@
 
             </div>
 
-            <p class="saludo-usuario">Hola Usuario!</p> <!-- Luego hacer que el nombre del invitado se traiga del inicio -->
+            <p class="saludo-usuario">Hola Usuario!</p>
 
         </div>
 
         <div id="contenedor-carrito-productos">
-
-            <div class="tarjeta-carrito" style="margin-top: 20px;">
-                    <!--Estaria bueno que en un futuro en vez de que sean titulo se puedan usar como botones organizadores -->
-                    <h1>IMAGEN</h1> 
-
-                    <h1>NOMBRE</h1>
-
-                    <h1>PRECIO</h1>
-
-                    <h1>CANTIDAD</h1>
-            </div>
-
-            <ul>
-
-                <li class="tarjeta-carrito">
-                    <img src="/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
-
-                        <h3>Rojo Fuego</h3>
-
-                        <p>$200</p>
-
-                        <div>
-                            <button> < </button>
-                            <p>1</p>
-                            <button> > </button>
-                        </div>
-                </li>
-
-                <li class="tarjeta-carrito">
-                    <img src="/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
-
-                        <h3>Rojo Fuego</h3>
-
-                        <p>$200</p>
-
-                        <div>
-                            <button> < </button>
-                            <p>1</p>
-                            <button> > </button>
-                        </div>
-                </li>
-
-                <li class="tarjeta-carrito">
-                    <img src="/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
-
-                        <h3>Rojo Fuego</h3>
-
-                        <p>$200</p>
-
-                        <div>
-                            <button> < </button>
-                            <p>1</p>
-                            <button> > </button>
-                        </div>
-                </li>
-
-                <li class="tarjeta-carrito">
-                    <img src="/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
-
-                        <h3>Rojo Fuego</h3>
-
-                        <p>$200</p>
-
-                        <div>
-                            <button> < </button>
-                            <p>1</p>
-                            <button> > </button>
-                        </div>
-                </li>
-
-                <li class="tarjeta-carrito">
-                    <img src="/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
-
-                        <h3>Rojo Fuego</h3>
-
-                        <p>$200</p>
-
-                        <div>
-                            <button> < </button>
-                            <p>1</p>
-                            <button> > </button>
-                        </div>
-                </li>
-
-                <li class="tarjeta-carrito">
-                    <img src="/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png" alt="juego">
-
-                        <h3>Rojo Fuego</h3>
-
-                        <p>$200</p>
-
-                        <div>
-                            <button> < </button>
-                            <p>1</p>
-                            <button> > </button>
-                        </div>
-                </li>
-
-            </ul>
+            <!-- El contenido se generará dinámicamente con JavaScript -->
         </div>
         
-        <script> 
-    
-        </script>
+        <script src="/frontend/js/carrito.js"></script>
     </body>
 </html>
