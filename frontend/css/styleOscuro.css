@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(255, 255, 255); /*rgb(53, 50, 46)*/
+    background-color: rgb(53, 50, 46); /*rgb(53, 50, 46)*/
     color: rgb(0, 0, 0);
 }
 
@@ -48,8 +48,10 @@ body video{
 #nombre-usuario{
     font-size: 20px;
     text-align: center;
+
     border-radius: 4px;
     border: none;
+
     width: 150px;
     height: 30px;
     margin-bottom: 10px;
@@ -75,7 +77,6 @@ body video{
 .boton-inicio:hover{ 
     background-color: rgb(241, 241, 227);
 }
-
 
 /* PANTALLA PRODUCTOS */
 
@@ -121,6 +122,22 @@ body video{
     border: 2px solid rgb(166, 38, 32);
 }
 
+#contenedor-Tema{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#boton-cambiarTema {
+    background-color: rgb(166, 38, 32);
+    border: 2px solid rgb(166, 38, 32);
+    border-radius: 100px;
+}
+
+#boton-cambiarTema img{
+    width: 50px;
+}
+
 .contenedor-carrito-logo{
     display: flex;
     align-items: center;
@@ -136,6 +153,7 @@ body video{
     border-radius: 3px;
     color: white;
 }
+
 .productos {
     display: flex;
     flex-direction: column;
@@ -146,10 +164,12 @@ body video{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10%
+    gap: 10%;
+    
 }
 
 #selector-catalogo button{
+    color: white;
     font-size: 150%;
     margin-top: 10px;
     padding: 1% 5% 1% 5%;
@@ -161,7 +181,7 @@ body video{
 }
 
 #selector-catalogo button:hover{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(255, 253, 253);
 }
 
 #contenedor-productos{
@@ -180,39 +200,64 @@ body video{
     width: 15%;
     padding: 10px;
     margin: 0px 0px 20px 0px;
-    border: 2px solid black;
+    background-color: rgb(166, 38, 32);
+
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 15px;
 }
 
 .tarjeta-producto img{
     width: 80%;
     height: 230px;
     margin: 10px 0px 0px 0px;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
 }
 
 .tarjeta-producto h1{
     font-size: 150%;
+    color: white;
 }
 
 .tarjeta-producto p{
     font-size: 150%;
     background-color: transparent;
+    color: white;
 }
 
 .tarjeta-producto button{
-    width: 90%;
     font-size: 100%;
+    color: white;
+
     margin: 0px 0px 10px 0px;
     padding: 5% 10% 5% 10%;
+    width: 90%;
 
     background-color: transparent;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
     transition: background-color 1s ease;
 }
 
 .tarjeta-producto button:hover{
     background-color: rgb(252, 202, 200);
+}
+
+.mensaje-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 50px;
+    margin: 20px 0;
+
+    font-size: 18px;
+    color: #bdbdbd;
+    text-align: center;
+
+    background-color: rgba(70, 70, 70, 0.479);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 8px;
 }
 
 /* PANTALLA CARRITO */
@@ -222,6 +267,13 @@ body video{
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+}
+
+.mensaje-carritoVacio{
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 18px;
+    color: white;
 }
 
 .tarjeta-carrito {
@@ -234,12 +286,12 @@ body video{
     padding: 10px;
 
     border-radius: 10px;
-    background-color: rgb(53, 50, 46);
+    background-color: rgb(166, 38, 32);
 }
 
 .tarjeta-carrito img {
     width: 180px;
-    border: 5px solid rgb(166, 38, 32);
+    border: 5px solid rgb(53, 50, 46);
 } 
 
 .tarjeta-carrito p{
@@ -269,47 +321,70 @@ body video{
 
 .tarjeta-carrito div button{
     font-size: 150%;
-    color: rgb(53, 50, 46);
+    color: rgb(255, 255, 255);
     border: 2px solid rgba(0, 0, 0, 0);
     background-color: rgb(166, 38, 32);
     transition: color 0.5s ease;
 }
 
 .tarjeta-carrito div button:hover{
-    color: white;
-}
+    color: rgb(53, 50, 46);
+}   
 
 .botonEliminar-carrito{
     font-size: 100%;
 
-    background-color: rgb(255, 49, 35);
-    color: white;
+    background-color: rgb(255, 90, 90);
+    color: rgb(0, 0, 0);
 
-    border: 5px solid  rgb(255, 49, 35);
+    border: 5px solid  rgb(255, 90, 90);
     border-radius: 6px;
 
     transition: background-color 0.5s ease, border 0.5s ease;
 }
 
 .botonEliminar-carrito:hover{
-    background-color: rgb(160, 31, 22);
-    border: 5px solid  rgb(160, 31, 22);
+    background-color: rgb(255, 184, 179);
+    border: 5px solid  rgb(255, 184, 179);
 }
 
-.mensaje-error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contenedor-opcionesCarrito{
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 20px; 
+}
 
-    width: 100%;
-    padding: 50px;
-    margin: 20px 0;
+.contenedor-opcionesCarrito p{
+    color: white;
+}
 
-    font-size: 18px;
-    color: #666;
-    text-align: center;
+.boton-vaciarCarrito{
+    background-color: #ff4444; 
+    color: rgb(53, 50, 46);
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin: 10px;
+    transition: background-color 1s ease;
+}
 
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+.boton-vaciarCarrito:hover{
+    background-color: #ff9191; 
+}
+
+.boton-finalizarCompra{
+    background-color: #4CAF50; 
+    color: rgb(53, 50, 46);
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin: 10px;
+
+    transition: background-color 1s ease;
+}
+
+.boton-finalizarCompra:hover{
+    background-color: #8dff91; 
 }

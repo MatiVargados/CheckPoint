@@ -40,7 +40,7 @@ function mostrarElementosCarrito() {
     let contadorProductos =  0;
     
     if (arrayCarrito.length === 0) {
-        html += '<p style="text-align: center; margin-top: 20px; font-size: 18px;">El carrito está vacío</p>';
+        html += '<p class="mensaje-carritoVacio">El carrito está vacío</p>';
     } else {
         html += '<ul>';
 
@@ -68,10 +68,10 @@ function mostrarElementosCarrito() {
         // Agregar total del carrito
         let total = arrayCarrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0);
         html += `
-            <div style="text-align: center; margin-top: 20px; font-size: 20px; font-weight: bold;">
+            <div class="contenedor-opcionesCarrito">
                 <p>Total del carrito: $${total}</p>          
-                <button onclick="vaciarCarrito()" style="background-color: #ff4444; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 10px;">Vaciar Carrito</button>
-                <button onclick="finalizarCompra()" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 10px;">Finalizar Compra</button>
+                <button onclick="vaciarCarrito()" class="boton-vaciarCarrito">Vaciar Carrito</button>
+                <button onclick="finalizarCompra()" class="boton-finalizarCompra">Finalizar Compra</button>
             </div>
         `;
     }
@@ -130,6 +130,23 @@ function finalizarCompra() {
     arrayCarrito = []
     mostrarElementosCarrito();
 }
+
+///////////////////////////////////
+// CAMBIAR TEMA (CLARO / OSCUTO) //
+              //(TRUE / FALSE)
+let linkCSS = document.getElementById("css-tema");
+
+// Función para aplicar el modo
+function aplicarModo(tema) {
+    if (tema) {
+    linkCSS.href = "/frontend/css/styleClaro.css";
+    } else {
+    linkCSS.href = "/frontend/css/styleOscuro.css";
+    }
+}
+
+let temaOscuroClaro = localStorage.getItem("temaOscuroClaro") === "true";
+aplicarModo(temaOscuroClaro);
 
 // Inicializar la página cuando se carga
 document.addEventListener('DOMContentLoaded', function() {

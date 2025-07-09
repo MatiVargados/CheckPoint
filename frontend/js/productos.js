@@ -20,7 +20,7 @@ let contenedorNombreUsuario = document.querySelector(".saludo-usuario");
 contenedorNombreUsuario.innerHTML = `Hola ${nombreUsuario}!`;
 
 // Variables globales
-let catalogo = "juegos";
+let catalogo = localStorage.getItem("catalogo") || "juegos";
 let productosData = [];
 
 // Variables contador de productos carritos
@@ -38,15 +38,24 @@ btnJuegos.addEventListener("click", () => elegirCatalogo("juegos"));
 btnConsolas.addEventListener("click", () => elegirCatalogo("consolas"));
 
 function elegirCatalogo(catalogoElegido) {
-    catalogo = catalogoElegido;
+    catalogo = catalogoElegido; // modifica a la variable global asi muestra los productos del catalogo
+    let color = "";
+
+    if (temaOscuroClaro === true){
+        color = "2px solid black"
+    } else {
+        color = "2px solid white"
+    }
     
     // Actualizar el estilo visual de los botones
     if (catalogoElegido === "juegos") {
-        btnJuegos.style.borderBottom = "2px solid black";
+        btnJuegos.style.borderBottom = color;
         btnConsolas.style.borderBottom = "2px solid transparent";
+        localStorage.setItem("catalogo", "juegos");
     } else {
         btnJuegos.style.borderBottom = "2px solid transparent";
-        btnConsolas.style.borderBottom = "2px solid black";
+        btnConsolas.style.borderBottom = color;
+        localStorage.setItem("catalogo", "consolas");
     }
     
     // Filtrar y mostrar productos según la categoría
@@ -180,6 +189,35 @@ function agregarAlCarrito(productoId) {
     localStorage.setItem("cantidadProductosCarrito", cantidadCargadaProductosCarrito.toString());
 
 }
+
+///////////////////////////////////
+// CAMBIAR TEMA (CLARO / OSCUTO) //
+              //(TRUE / FALSE)
+let botonCambiarTema = document.getElementById("boton-cambiarTema");
+let linkCSS = document.getElementById("css-tema");
+
+// Función para aplicar el modo
+function aplicarModo(tema) {
+    if (tema) {
+    elegirCatalogo(localStorage.getItem("catalogo"));
+    linkCSS.href = "/frontend/css/styleClaro.css";
+    botonCambiarTema.innerHTML = `<img src="/frontend/elementos/imagenes/Tema/claro.png" alt="tema claro">`;
+    } else {
+    elegirCatalogo(localStorage.getItem("catalogo"));
+    linkCSS.href = "/frontend/css/styleOscuro.css";
+    botonCambiarTema.innerHTML = `<img src="/frontend/elementos/imagenes/Tema/oscuro.png" alt="tema oscuro">`;
+    }
+}
+
+let temaOscuroClaro = localStorage.getItem("temaOscuroClaro") === "true";
+aplicarModo(temaOscuroClaro);
+
+// Al hacer clic, cambiar el modo y guardarlo
+botonCambiarTema.addEventListener("click", function() {
+    temaOscuroClaro = !temaOscuroClaro; // al tocar el boton (quiere que cambie el tema) invertimos el valor del tema
+    aplicarModo(temaOscuroClaro);
+    localStorage.setItem("temaOscuroClaro", temaOscuroClaro); 
+});
 
 // Inicializar la página
 document.addEventListener('DOMContentLoaded', function() {

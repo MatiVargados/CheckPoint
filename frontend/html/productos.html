@@ -21,7 +21,7 @@
         <meta name="author" content="Juan Ullua y Matias Vargados">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
-        <link rel="stylesheet" href="/frontend/css/style.css">
+        <link id="css-tema" rel="stylesheet" href="/frontend/css/styleOscuro.css">
 
         <title>CheckPoint</title> 
         
@@ -37,6 +37,12 @@
 
             <p class="saludo-usuario" href="/frontend/html/productos.html">Hola Usuario!</p>
 
+            <div id="contenedor-Tema">
+                <button id="boton-cambiarTema">
+                    <img src="/frontend/elementos/imagenes/Tema/claro.png" alt="tema claro">
+                </button>
+            </div>
+
             <!-- se le podria hacer un sector o un div para almacenar el sector carrito-->
             <section class="contenedor-carrito-logo">
                 <a href="/frontend/html/carrito.html">
@@ -44,7 +50,6 @@
                 </a>
                 <p id="CantidadProdutos-carrito">Productos: 0</p>
             </section>
-
 
         </div>
 
