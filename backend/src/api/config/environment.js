@@ -1,17 +1,22 @@
+// dotenv para manejar variables de entorno
 import dotenv from "dotenv";
 
-dotenv.config(); //carga las variables de entorno desde el archivo .env
+// Carga las variables desde el archivo .env
+dotenv.config();
 
+// Configuracion del entorno
 export default{
+    // Puerto del servidor, usa el de .env o 3000 por defecto
     port: process.env.PORT || 3000,
+    // Configuracion de la base de datos
     database: {
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,  // se usa el db_port cuando tenes un port distinto al predeterminado (en este caso en el xampp)
-        name: process.env.DB_NAME,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD
+        host: process.env.DB_HOST,        // Host de la base de datos
+        port: process.env.DB_PORT,        // Puerto (util cuando usas un puerto diferente, como en XAMPP)
+        name: process.env.DB_NAME,        // Nombre de la base de datos
+        user: process.env.DB_USER,        // Usuario
+        password: process.env.DB_PASSWORD // Contrasena
     }
 }
 
-//para probar si conectaba a la db
+// Para probar si conectaba a la base de datos
 console.log('DB_USER:', process.env.DB_USER);

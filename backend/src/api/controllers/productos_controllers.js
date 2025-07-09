@@ -1,13 +1,14 @@
+// Traemos el modelo de productos
 import Productos from "../models/productos_models.js";
 
+// Traer todos los productos - GET /api/productos
 const getAllProductos = async (req, res) => {
 
     try {
-
         const [rows] = await Productos.selectAllProductos();
 
         res.status(200).json({
-            payload:rows,
+            payload: rows,
             message: rows.length === 0? "No se encontraron productos": "Productos obtenidos correctamente"
         });
 
@@ -19,14 +20,14 @@ const getAllProductos = async (req, res) => {
     }
 };
 
+// Traer un producto por ID - GET /api/productos/:id
 const getIdProductos = async (req, res) => {
   try {
-    // let id = req.params.id
     let { id } = req.params;
 
     let [rows] = await Productos.selectIdProductos(id);
 
-    // Verificamos si se encontro el producto
+    // Si no encontramos el producto
     if (rows.length === 0) {
       return res.status(404).json({
         error: `No se encontro el producto con id: ${id}`
@@ -38,17 +39,18 @@ const getIdProductos = async (req, res) => {
     });
   } catch (error) {
     console.error(`Error obteniendo producto con id ${id}`, error.message);
-
     res.status(500).json({
       error: "Error interno al obtener un producto por id"
     });
   }
 };
 
+// Crear un nuevo producto - POST /api/productos
 const createProductos = async (req, res) => {
     try {
         let { categoria, imagen, nombre, precio, activo } = req.body;
 
+        // Chequeamos que esten todos los campos
         if(!categoria || !imagen || !nombre || !precio || !activo) {
             return res.status(400).json({
                 message: "Datos invalidos, asegurate de enviar nombre, imagen, categoria, precio y activo"
@@ -60,12 +62,10 @@ const createProductos = async (req, res) => {
         res.status(201).json({
             message: "Producto creado con exito",
             productId: rows.insertId
-        }); // Con productId devolvemos info util del insert para deolver el ID del producto creado
-
+        });
 
     } catch (error) {
         console.error(error);
-
         res.status(500).json({
             message: "Error interno del servidor",
             error: error.message
@@ -73,10 +73,12 @@ const createProductos = async (req, res) => {
     }
 };
 
+// Actualizar un producto - PUT /api/productos
 const updateProductos = async (req, res) => {
     try {
         let { id, categoria, imagen, nombre, precio, activo } = req.body;
 
+        // Chequeamos que esten todos los campos
         if(!id || !categoria|| !imagen || !nombre || !precio || !activo) {
             return res.status(400).json({
                 message: "Faltan campos requeridos"
@@ -85,7 +87,7 @@ const updateProductos = async (req, res) => {
 
         let [result] = await Productos.selectUpdateProductos(nombre, imagen, categoria, precio, activo, id);
 
-        // Testearmos que se actualizara
+        // Si no se actualizo nada
         if(result.affectedRows === 0) {
             return res.status(400).json({
                 message: "No se actualizo el producto"
@@ -98,7 +100,6 @@ const updateProductos = async (req, res) => {
 
     } catch (error) {
         console.error("Error al actualizar el producto", error);
-
         res.status(500).json({
             message: "Error interno del servidor",
             error: error.message
@@ -106,6 +107,7 @@ const updateProductos = async (req, res) => {
     }
 };
 
+// Eliminar un producto - DELETE /api/productos/:id
 const deleteProductos = async (req, res) => {
     try {
         let { id } = req.params;
@@ -118,7 +120,7 @@ const deleteProductos = async (req, res) => {
 
         let [result] = await Productos.selectDeleteProductos(id);
 
-        // Testearmos que se eliminara
+        // Si no se elimino nada
         if(result.affectedRows === 0) {
             return res.status(400).json({
                 message: `No se encontro un productos con id ${id}`
@@ -131,7 +133,6 @@ const deleteProductos = async (req, res) => {
 
     } catch (error) {
         console.error("Error en DELETE /productos/:id", error);
-
         res.status(500).json({
             message: `Error al eliminar productos con id ${id}`, error,
             error: error.message
@@ -139,7 +140,7 @@ const deleteProductos = async (req, res) => {
     }
 };
 
-
+// Exportamos todos los controladores
 export {
   getAllProductos,
   getIdProductos,

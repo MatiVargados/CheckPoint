@@ -1,24 +1,19 @@
-////////////////////////////////////////////////////////////////////////
-// Logica para trabajar con archivos y rutas de proyecto en Express.js//
+/////////////////////////////////////////////////////////////////
+// Utilidades para trabajar con archivos y rutas en Express.js //
+// Compatible con ES modules
 
-// Importacion de modulos para trabajar con rutas
-
-// Convierte una URL de archivo del sistema en una ruta valida del SO (/home/usuario/proyecto)
+// Modulos para trabajar con rutas
 import { fileURLToPath } from "url";
-
-// dirname extrae el directorio padre de una ruta
-// join une rutas como si fuera path.join(...). esto nos sirve para construir rutas
 import { dirname, join } from "path";
 
-// import.meta.url contiene la URL del archivo actual (file://home/user/project/src/api/utils/index.js)
-// fileURLToPath la convierte a ruta local del sistema de archivos (/home/user/proyects/src/api/utils/index.js)
+// Convertimos la URL del archivo actual a ruta local
 const __filename = fileURLToPath(import.meta.url);
 
-// dirname(__filename) da el directorio actual de este archivo (/home/user/project/src/api/utils)
-// con ../../../ retrocedemos3 niveles en la estructura del proyecto /utils -> /api -> /src -> tpIntegradorBack/
-const __dirname = join(dirname(__filename), "../../../"); // apuntamos a la raiz del proyecto
+// Retrocedemos 3 niveles para llegar a la raiz del proyecto
+// /utils -> /api -> /src -> tpIntegradorBack/
+const __dirname = join(dirname(__filename), "../../../");
 
-//exportamos __dirname y join para que otros archivos puedan importar y usar estas herramientas
+// Exportamos para usar en otros archivos
 export {
     __dirname,
     join
