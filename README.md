@@ -34,13 +34,12 @@ El sistema se divide en dos grandes módulos:
 ├── views/
 ├── public/
 ├── .env
-├── server.js
+└── server.js
 
 /frontend
 ├── html/
 ├── css/
-├── js/
-
+└── js/
 
 ---
 
