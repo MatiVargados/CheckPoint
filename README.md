@@ -27,6 +27,7 @@ El sistema se divide en dos grandes módulos:
 
 ## 📦 Estructura del Proyecto
 
+```plaintext
 /backend
 ├── controllers/
 ├── models/
@@ -40,6 +41,7 @@ El sistema se divide en dos grandes módulos:
 ├── html/
 ├── css/
 └── js/
+```
 
 ---
 
