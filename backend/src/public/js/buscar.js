@@ -1,34 +1,36 @@
-
+// URL de la API
 const url = `http://localhost:3000/api`;
 
+// Elementos del DOM
 let getId_lista = document.getElementById("getId-lista");
 let getProduct_form = document.getElementById("getProduct-form");
 
+// Cuando se envia el formulario de busqueda
 getProduct_form.addEventListener("submit", async(event) =>{
 
 try {
-    event.preventDefault(); // evitamos el envio por defecto del formulario
+    event.preventDefault();
 
-    // Como obtenemos y almacenamos la informacion de un formulario en js?
+    // Capturamos los datos del formulario
     let formData = new FormData(event.target);
     console.log(formData);
     
-    // Obtener informacion de un formulario html y la vamos a convetir en informacion js
     let data = Object.fromEntries(formData.entries());
-    console.log(data); // en teoria idProd (pero no me aparece en el panel f12)
+    console.log(data);
 
-    // Se almacena el valor numerico 
     let idProd = data.idProd;
     console.log(idProd);
 
+    // Pedimos el producto por ID
     let response = await fetch(`${url}/productos/${idProd}`);
-    let datos = await response.json(); // transforma los datos en js
+    let datos = await response.json();
     console.log(datos);
 
-    let producto = datos.payload[0]; // es el primer objeto del array
+    let producto = datos.payload[0];
 
     console.log(producto.imagen);
 
+    // Mostramos el producto encontrado
     let htmlProducto =  `
                     <li class="li-listados productos-listados">
                         <img src="${producto.imagen}" alt="${producto.nombre}" class="img-listados">
@@ -42,4 +44,3 @@ try {
     console.error("Error al obtener producto: ", error);
 }
 })
-

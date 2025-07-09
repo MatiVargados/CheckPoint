@@ -1,24 +1,29 @@
+// URL de la API
 const url = `http://localhost:3000/api`;
 
+// El formulario de alta de productos
 let altaProducts_form = document.getElementById("altaProducts-form");
 
+// Cuando se envia el formulario
 altaProducts_form.addEventListener("submit", async (event) => {
 
-event.preventDefault(); // sin esto se arruina la ainformacion
+event.preventDefault(); // Sin esto se arruina todo
 
-// Como obtenemos y almacenamos la informacion de un formulario en js?
+// Capturamos los datos del formulario
 let formData = new FormData(event.target);
 
-// Transformamos nuestro objeto FormData en un objeto normal JS
+// Convertimos FormData a objeto normal
 let data = Object.fromEntries(formData.entries());
 console.log(data);
 console.table(data);
 
+// Chequeamos que esten todos los campos
 if (!data.nombre || !data.imagen || !data.precio){
     alert("Todos los campos son obligatorios");
     return;
 }
 
+// El precio no puede ser negativo
 if (Number(data.precio) < 0) {
     alert("el precio no puede ser negativo");
     return res.status(400).json({
@@ -27,6 +32,7 @@ if (Number(data.precio) < 0) {
 }
 
 try {
+    // Enviamos el producto nuevo
     let response = await fetch(`${url}/productos`, {
     method: "POST",
     headers: {
