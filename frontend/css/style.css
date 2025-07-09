@@ -88,7 +88,6 @@ body video{
 }
 
 .header img {
-
     margin: 10px;
     width: 200px;
 }
@@ -114,7 +113,6 @@ body video{
 .saludo-usuario{
     text-decoration: none;
     color: rgb(255, 255, 255);
-    
     
     font-size: 20px;
     background-color: rgb(53, 50, 46);
@@ -181,12 +179,14 @@ body video{
 
     width: 15%;
     padding: 10px;
-    margin: 30px 0px 0px 0px;
+    margin: 0px 0px 20px 0px;
     border: 2px solid black;
 }
 
 .tarjeta-producto img{
-    width: 100%;
+    width: 80%;
+    height: 230px;
+    margin: 10px 0px 0px 0px;
     border: 2px solid black;
 }
 
@@ -202,7 +202,7 @@ body video{
 .tarjeta-producto button{
     width: 90%;
     font-size: 100%;
-    margin-top: 10px;
+    margin: 0px 0px 10px 0px;
     padding: 5% 10% 5% 10%;
 
     background-color: transparent;

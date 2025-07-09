@@ -26,6 +26,7 @@ let productosData = [];
 // Variables contador de productos carritos
 let cantidadCargadaProductosCarrito = parseInt(localStorage.getItem("cantidadProductosCarrito")) || 0;
 let contenedorContadorProductos = document.getElementById("CantidadProdutos-carrito");
+contenedorContadorProductos.innerHTML = `Productos: ${cantidadCargadaProductosCarrito}`;
 
 // Elementos del DOM
 let contenedorBotones = document.getElementById("selector-catalogo");
@@ -105,15 +106,17 @@ function mostrarProductosFiltrados(productosAMostrar = null) {
         htmlProductos = '<li class="mensaje-error">No hay productos disponibles</li>';
     } else {
         productosParaMostrar.forEach(producto => {
-            htmlProductos += `
-                <li class="tarjeta-producto">
-                    <img src="${producto.imagen || '/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png'}" 
-                         alt="${producto.nombre || 'Producto'}">
-                    <h1>${producto.nombre || 'Sin nombre'}</h1>
-                    <p>$${producto.precio || '0'}</p>
-                    <button class="btn-agregar-carrito" data-id="${producto.id || producto._id || producto.nombre}">Agregar al Carrito</button>
-                </li>
-            `;
+            if (producto.activo === 1){
+                htmlProductos += `
+                    <li class="tarjeta-producto">
+                        <img src="${producto.imagen || '/frontend/elementos/imagenes/productos/juegos/pokemon-rojo-fuego.png'}" 
+                            alt="${producto.nombre || 'Producto'}">
+                        <h1>${producto.nombre || 'Sin nombre'}</h1>
+                        <p>$${producto.precio || '0'}</p>
+                        <button class="btn-agregar-carrito" data-id="${producto.id || producto._id || producto.nombre}">Agregar al Carrito</button>
+                    </li>
+                `;
+            }
         });
     }
 
@@ -151,7 +154,6 @@ function agregarAlCarrito(productoId) {
         productoExistente.cantidad += 1;
         console.log("Producto ya en carrito, nueva cantidad:", productoExistente.cantidad);
     } else {
-        // ¡Agregá este log!
         console.log("productosData:", productosData);
         productosData.forEach(p => console.log("Producto:", p));
         const producto = productosData.find(p => p.id == productoId || p._id == productoId || p.nombre == productoId);
@@ -165,7 +167,6 @@ function agregarAlCarrito(productoId) {
                 cantidad: 1
             });
             console.log("Producto agregado al carrito");
-            cantidadCargadaProductosCarrito += 1;
         } else {
             console.log("No se encontró el producto para agregar");
         }
@@ -174,7 +175,7 @@ function agregarAlCarrito(productoId) {
     console.log("Carrito después:", carrito);
 
     // Contador de productos // 
-
+    cantidadCargadaProductosCarrito += 1;
     contenedorContadorProductos.innerHTML = `Productos: ${cantidadCargadaProductosCarrito}`;
     localStorage.setItem("cantidadProductosCarrito", cantidadCargadaProductosCarrito.toString());
 

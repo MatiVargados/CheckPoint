@@ -37,13 +37,12 @@ function mostrarElementosCarrito() {
     }
     
     let html = ``;
+    let contadorProductos =  0;
     
     if (arrayCarrito.length === 0) {
         html += '<p style="text-align: center; margin-top: 20px; font-size: 18px;">El carrito está vacío</p>';
     } else {
         html += '<ul>';
-
-        let contadorProductos =  0;
 
         arrayCarrito.forEach(producto => {
             html += `
@@ -65,20 +64,19 @@ function mostrarElementosCarrito() {
         });
         
         html += '</ul>';
-
-        localStorage.setItem("cantidadProductosCarrito", contadorProductos.toString());
         
         // Agregar total del carrito
         let total = arrayCarrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0);
         html += `
             <div style="text-align: center; margin-top: 20px; font-size: 20px; font-weight: bold;">
-                <p>Total del carrito: $${total}</p>
+                <p>Total del carrito: $${total}</p>          
                 <button onclick="vaciarCarrito()" style="background-color: #ff4444; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 10px;">Vaciar Carrito</button>
                 <button onclick="finalizarCompra()" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 10px;">Finalizar Compra</button>
             </div>
         `;
     }
-    
+
+    localStorage.setItem("cantidadProductosCarrito", contadorProductos.toString());
     contenedorCarrito.innerHTML = html;
 }
 
@@ -97,7 +95,7 @@ function descontarCantidadElementoCarrito(id, eliminar) {
     let index = arrayCarrito.findIndex(producto => producto.id === id || producto._id === id);
     
     if (index !== -1) {
-        // Si la cantidad es mayor a 1, restar
+        // Si la cantidad es mayor a 1, restar y eliminar es para saber si se quiere eliminar el producto o no
         if (arrayCarrito[index].cantidad > 1 && eliminar === false) {
             arrayCarrito[index].cantidad -= 1;
         } else {
@@ -121,7 +119,7 @@ function finalizarCompra() {
     if (arrayCarrito.length === 0) {
         alert('El carrito está vacío');
         localStorage.clear();
-        window.location.href = "frontend\\html\\inicio.html";
+        window.location.href = "../html/inicio.html";
         return;
     }
     
