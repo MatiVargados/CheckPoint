@@ -23,6 +23,10 @@ contenedorNombreUsuario.innerHTML = `Hola ${nombreUsuario}!`;
 let catalogo = "juegos";
 let productosData = [];
 
+// Variables contador de productos carritos
+let cantidadCargadaProductosCarrito = parseInt(localStorage.getItem("cantidadProductosCarrito")) || 0;
+let contenedorContadorProductos = document.getElementById("CantidadProdutos-carrito");
+
 // Elementos del DOM
 let contenedorBotones = document.getElementById("selector-catalogo");
 const btnJuegos = document.getElementById("btn-juegos");
@@ -135,7 +139,6 @@ function mostrarProductosError() {
 // Función para agregar al carrito (actualizada para ser compatible)
 function agregarAlCarrito(productoId) {
     if (!productosData || productosData.length === 0) {
-        alert("Los productos aún no se cargaron. Espera un momento e intenta de nuevo.");
         return;
     }
     console.log("ID recibido:", productoId);
@@ -162,13 +165,19 @@ function agregarAlCarrito(productoId) {
                 cantidad: 1
             });
             console.log("Producto agregado al carrito");
+            cantidadCargadaProductosCarrito += 1;
         } else {
             console.log("No se encontró el producto para agregar");
         }
     }
     localStorage.setItem('carrito', JSON.stringify(carrito));
     console.log("Carrito después:", carrito);
-    alert('Producto agregado al carrito!');
+
+    // Contador de productos // 
+
+    contenedorContadorProductos.innerHTML = `Productos: ${cantidadCargadaProductosCarrito}`;
+    localStorage.setItem("cantidadProductosCarrito", cantidadCargadaProductosCarrito.toString());
+
 }
 
 // Inicializar la página

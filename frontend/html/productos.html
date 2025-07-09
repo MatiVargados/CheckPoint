@@ -29,7 +29,7 @@
     <body>
 
         <div class="header">
-            <a href="/frontend/html/inicio.html">
+            <a href="/frontend/html/productos.html">
                 <img src="/frontend/elementos/imagenes/logo.png" alt="Logo de CheckPoint">
             </a>
             
@@ -38,16 +38,20 @@
             <p class="saludo-usuario" href="/frontend/html/productos.html">Hola Usuario!</p>
 
             <!-- se le podria hacer un sector o un div para almacenar el sector carrito-->
-            <a href="/frontend/html/carrito.html">
-                <img src="/frontend/elementos/imagenes/carrito.png" alt="Imagen Carrito" style="width: 100px;">
-            </a>
+            <section class="contenedor-carrito-logo">
+                <a href="/frontend/html/carrito.html">
+                    <img src="/frontend/elementos/imagenes/carrito.png" alt="Imagen Carrito" style="width: 100px;">
+                </a>
+                <p id="CantidadProdutos-carrito">Productos: 0</p>
+            </section>
+
 
         </div>
 
         <div class="productos">
 
             <section id="selector-catalogo">
-                <button id="btn-juegos">Video Juegos</button> 
+                <button style="border-bottom: 2px solid black;" id="btn-juegos">Video Juegos</button> 
                 <button id="btn-consolas">Consolas</button>
             </section>
 
@@ -59,7 +63,7 @@
 
         </div>
 
-        <script type="module" src="/frontend/js/pantalla_productos.js"></script>
+        <script type="module" src="/frontend/js/productos.js"></script>
 
     </body>
 </html>
