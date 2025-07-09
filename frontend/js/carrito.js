@@ -118,17 +118,14 @@ function vaciarCarrito() {
 function finalizarCompra() {
     if (arrayCarrito.length === 0) {
         alert('El carrito está vacío');
-        localStorage.clear();
-        window.location.href = "../html/inicio.html";
         return;
     }
     
-    let total = arrayCarrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0);
-    alert(`¡Compra finalizada! Total: $${total}`);
+    // Guardar el carrito actual para el ticket
+    localStorage.setItem('carrito', JSON.stringify(arrayCarrito));
     
-    // Vaciar el carrito después de la compra
-    arrayCarrito = []
-    mostrarElementosCarrito();
+    // Redirigir al ticket
+    window.location.href = '/frontend/html/ticket.html';
 }
 
 ///////////////////////////////////

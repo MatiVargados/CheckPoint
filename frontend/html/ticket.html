@@ -1,0 +1,53 @@
+<!--
+    ARCHIVO: ticket.html
+    
+    FUNCIÓN PRINCIPAL: Página del ticket de compra
+    
+    ¿QUÉ HACE ESTA PÁGINA?
+    - Muestra un modal con el resumen de la compra
+    - Lista los productos comprados con sus cantidades
+    - Muestra el total de la compra
+    - Permite volver al inicio
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="description" content="CheckPoint - Ticket de Compra"> 
+        <meta name="author" content="Juan Ullua y Matias Vargados">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+        <link id="css-tema" rel="stylesheet" href="/frontend/css/styleClaro.css">
+
+        <title>CheckPoint - Ticket de Compra</title> 
+        
+    </head>
+
+    <body>
+        <div id="ticket-div" class="ticket-div">
+            <div class="ticket-contenido">
+                <div class="ticket-header">
+                    <img src="/frontend/elementos/imagenes/logo.png" alt="Logo de CheckPoint">
+                    <h2>¡Compra Finalizada!</h2>
+                </div>
+                
+                <div class="ticket-body">
+                    <div id="productos-ticket">
+                        <!-- Los productos se cargarán dinámicamente -->
+                    </div>
+                    
+                    <div class="ticket-total">
+                        <h3>Total: $<span id="total-ticket">0</span></h3>
+                    </div>
+                </div>
+                
+                <div class="ticket-footer">
+                    <button id="btn-continuar" class="btn-continuar">Continuar</button>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/frontend/js/ticket.js"></script>
+    </body>
+</html> 
