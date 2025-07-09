@@ -267,6 +267,13 @@ body video{
     flex-direction: column;
 }
 
+.mensaje-carritoVacio{
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}
+
 .tarjeta-carrito {
     display: flex;
     justify-content: space-around;
