@@ -1,3 +1,16 @@
+/**
+ * ARCHIVO: index.js
+ * 
+ * FUNCIÓN PRINCIPAL: Página de inicio - Captura el nombre del usuario
+ * 
+ * ¿QUÉ HACE ESTE ARCHIVO?
+ * - Muestra un formulario para ingresar el nombre del usuario
+ * - Guarda el nombre en el navegador (localStorage)
+ * - Redirige al usuario a la página de productos
+ * - Permite usar Enter para enviar el formulario
+ * - Valida que se ingrese un nombre antes de continuar
+ */
+
 let input_nombreUsuario = document.getElementById("nombre-usuario");
 let nombreUsuario = "";
 

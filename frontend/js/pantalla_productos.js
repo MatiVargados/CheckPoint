@@ -1,3 +1,18 @@
+/**
+ * ARCHIVO: pantalla_productos.js
+ * 
+ * FUNCIÓN PRINCIPAL: Página de productos - Muestra catálogo y permite agregar al carrito
+ * 
+ * ¿QUÉ HACE ESTE ARCHIVO?
+ * - Carga productos desde la API del servidor
+ * - Muestra productos por categorías (juegos/consolas)
+ * - Permite buscar productos por nombre
+ * - Permite agregar productos al carrito
+ * - Guarda productos en el navegador para uso offline
+ * - Muestra el saludo personalizado al usuario
+
+ */
+
 // Obtener el nombre de usuario del localStorage o usar un valor por defecto
 let nombreUsuario = localStorage.getItem('nombreUsuario') || 'Usuario';
 
@@ -78,7 +93,6 @@ function mostrarProductosFiltrados(productosAMostrar = null) {
     let contenedor_productos = document.getElementById("contenedor-productos");
     let htmlProductos = "";
 
-    // Si no se pasan productos específicos, usar los filtrados por categoría
     let productosParaMostrar = productosAMostrar || productosData.filter(producto => {
         return !producto.categoria || producto.categoria.toLowerCase() === catalogo;
     });
@@ -93,13 +107,20 @@ function mostrarProductosFiltrados(productosAMostrar = null) {
                          alt="${producto.nombre || 'Producto'}">
                     <h1>${producto.nombre || 'Sin nombre'}</h1>
                     <p>$${producto.precio || '0'}</p>
-                    <button onclick="agregarAlCarrito('${producto.id || producto.nombre}')">Agregar al Carrito</button>
+                    <button class="btn-agregar-carrito" data-id="${producto.id || producto._id || producto.nombre}">Agregar al Carrito</button>
                 </li>
             `;
         });
     }
 
     contenedor_productos.innerHTML = htmlProductos;
+
+    // Asignar el evento a los botones
+    document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
+        btn.addEventListener('click', function() {
+            agregarAlCarrito(this.getAttribute('data-id'));
+        });
+    });
 }
 
 function mostrarProductosError() {
@@ -111,18 +132,27 @@ function mostrarProductosError() {
     `;
 }
 
+// Función para agregar al carrito (actualizada para ser compatible)
 function agregarAlCarrito(productoId) {
-    // Obtener carrito actual del localStorage
+    if (!productosData || productosData.length === 0) {
+        alert("Los productos aún no se cargaron. Espera un momento e intenta de nuevo.");
+        return;
+    }
+    console.log("ID recibido:", productoId);
     let carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
-    
-    // Buscar si el producto ya está en el carrito
+    console.log("Carrito antes:", carrito);
+
     const productoExistente = carrito.find(item => item.id === productoId);
-    
+
     if (productoExistente) {
         productoExistente.cantidad += 1;
+        console.log("Producto ya en carrito, nueva cantidad:", productoExistente.cantidad);
     } else {
-        // Buscar el producto en los datos para obtener información completa
-        const producto = productosData.find(p => p.id === productoId || p.nombre === productoId);
+        // ¡Agregá este log!
+        console.log("productosData:", productosData);
+        productosData.forEach(p => console.log("Producto:", p));
+        const producto = productosData.find(p => p.id == productoId || p._id == productoId || p.nombre == productoId);
+        console.log("Producto encontrado:", producto);
         if (producto) {
             carrito.push({
                 id: productoId,
@@ -131,13 +161,13 @@ function agregarAlCarrito(productoId) {
                 imagen: producto.imagen,
                 cantidad: 1
             });
+            console.log("Producto agregado al carrito");
+        } else {
+            console.log("No se encontró el producto para agregar");
         }
     }
-    
-    // Guardar carrito actualizado
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    
-    // Feedback visual
+    console.log("Carrito después:", carrito);
     alert('Producto agregado al carrito!');
 }
 
