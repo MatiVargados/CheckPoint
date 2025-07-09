@@ -704,6 +704,139 @@ body video{
     }
 }
 
+/* ESTILOS PARA EL TICKET */
+.ticket-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ticket-contenido {
+    background-color: rgb(53, 50, 46);;
+    border-radius: 8px;
+    padding: 40px;
+    max-width: 700px;
+    width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgb(166, 38, 32);
+}
+
+.ticket-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgb(166, 38, 32);
+    padding-bottom: 20px;
+}
+
+.ticket-header img {
+    width: 180px;
+    margin-bottom: 15px;
+}
+
+.ticket-header h2 {
+    color: rgb(166, 38, 32);
+    font-size: 28px;
+    margin: 0;
+}
+
+.ticket-body {
+    margin-bottom: 30px;
+}
+
+.producto-ticket {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.producto-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.producto-info img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.producto-info h4 {
+    margin: 0 0 8px 0;
+    color: rgb(53, 50, 46);
+    font-size: 18px;
+}
+
+.producto-info p {
+    margin: 4px 0;
+    color: #d8d8d8;
+    font-size: 16px;
+}
+
+.producto-subtotal {
+    text-align: right;
+}
+
+.producto-subtotal p {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-size: 16px;
+}
+
+.ticket-total {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid rgb(166, 38, 32);
+}
+
+.ticket-total h3 {
+    color: rgb(166, 38, 32);
+    font-size: 24px;
+    margin: 0;
+}
+
+.ticket-footer {
+    text-align: center;
+}
+
+.btn-continuar {
+    background-color: rgb(166, 38, 32);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-continuar:hover {
+    background-color: rgb(140, 32, 27);
+}
+
+.mensaje-sin-productos {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 30px;
+    font-size: 16px;
+}
+
 /* ANIMACIONES*/
 .boton-inicio,
 .boton-vaciarCarrito,
@@ -766,7 +899,7 @@ body video{
 }
 
 .tarjeta-carrito:hover {
-    transform: translateX(5px);
+    transform: translateX(5px); /* Lo mueve en el eje x */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     background-color: rgba(166, 38, 32, 0.1);
 }
@@ -785,6 +918,7 @@ body video{
     animation: aparecerTicket 0.5s ease-out;
 }
 
+/* para la aparcion del ticket */
 @keyframes aparecerTicket {
     from {
         opacity: 0;
@@ -839,4 +973,24 @@ body video{
 
 #boton-cambiarTema:hover {
     transform: rotate(180deg) scale(1.1);
+}
+
+/* Responsive para el ticket */
+@media screen and (max-width: 600px) {
+    .ticket-contenido {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    .producto-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .producto-ticket {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
 }

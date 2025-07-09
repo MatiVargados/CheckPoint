@@ -841,3 +841,23 @@ body video{
 #boton-cambiarTema:hover {
     transform: rotate(180deg) scale(1.1);
 }
+
+/* Responsive para el ticket */
+@media screen and (max-width: 600px) {
+    .ticket-contenido {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    .producto-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .producto-ticket {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
