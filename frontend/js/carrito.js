@@ -70,6 +70,7 @@ function mostrarElementosCarrito() {
         html += `
             <div class="contenedor-opcionesCarrito">
                 <p>Total del carrito: $${total}</p>          
+                <button onclick="volverAProductos()" class="boton-volver">Volver</button>
                 <button onclick="vaciarCarrito()" class="boton-vaciarCarrito">Vaciar Carrito</button>
                 <button onclick="finalizarCompra()" class="boton-finalizarCompra">Finalizar Compra</button>
             </div>
@@ -126,6 +127,11 @@ function finalizarCompra() {
     
     // Redirigir al ticket
     window.location.href = '/frontend/html/ticket.html';
+}
+
+// Función para volver a la página de productos
+function volverAProductos() {
+    window.location.href = '/frontend/html/productos.html';
 }
 
 ///////////////////////////////////

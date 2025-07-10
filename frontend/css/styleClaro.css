@@ -6,6 +6,13 @@
 body {
     background-color: rgb(255, 255, 255); /*rgb(53, 50, 46)*/
     color: rgb(0, 0, 0);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > .footer {    
+    margin-top: auto;
 }
 
 /* PANTALLA INICIO */
@@ -409,6 +416,21 @@ body video{
 
 .boton-finalizarCompra:hover{
     background-color: #4a804c; 
+}
+
+.boton-volver{
+    background-color: #2196F3; 
+    color: rgb(255, 255, 255);
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin: 10px;
+    transition: background-color 1s ease;
+}
+
+.boton-volver:hover{
+    background-color: #1976D2; 
 }
 
 @media screen and (max-width: 1500px) {

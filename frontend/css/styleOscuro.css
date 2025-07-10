@@ -6,6 +6,13 @@
 body {
     background-color: rgb(53, 50, 46); /*rgb(53, 50, 46)*/
     color: rgb(0, 0, 0);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > .footer {    
+    margin-top: auto;
 }
 
 /* PANTALLA INICIO */
@@ -380,6 +387,21 @@ body video{
 
 .contenedor-opcionesCarrito p{
     color: white;
+}
+
+.boton-volver{
+    background-color: #2196F3; 
+    color: rgb(53, 50, 46);
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin: 10px;
+    transition: background-color 1s ease;
+}
+
+.boton-volver:hover{
+    background-color: #64B5F6; 
 }
 
 .boton-vaciarCarrito{
@@ -983,6 +1005,7 @@ body video{
     margin: 0;
     text-align: center;
     padding: 0 20px;
+
 }
 
 .info-footer p {
