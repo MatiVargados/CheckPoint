@@ -136,7 +136,7 @@ CheckPoint/
 4. Iniciar el servidor:
    ```bash
    cd backend
-   npm install express ejs mysql2 nodemon dotenv cors
+   npm install
    npm run dev
 
 5. Acceder a la app:
