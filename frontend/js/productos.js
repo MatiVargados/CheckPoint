@@ -226,39 +226,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Agregar event listener para el ordenamiento
     const selectOrdenar = document.getElementById('ordenar');
     if (selectOrdenar) {
-        selectOrdenar.addEventListener('change', ordenarProductos);
+        selectOrdenar.addEventListener('change', function() {
+            ordenarProductos(this.value);
+        });
     }
 });
 
-// Función para ordenar productos
-function ordenarProductos() {
-    const orden = document.getElementById('ordenar').value;
-    const productos = document.querySelectorAll('#contenedor-productos li');
-    const productosArray = Array.from(productos);
-    
-    productosArray.sort((a, b) => {
-        if (orden === 'nombre') {
-            const nombreA = a.querySelector('h1').textContent;
-            const nombreB = b.querySelector('h1').textContent;
-            return nombreA.localeCompare(nombreB);
-        }
-        if (orden === 'precio') {
-            const precioA = parseInt(a.querySelector('p').textContent.replace('$', ''));
-            const precioB = parseInt(b.querySelector('p').textContent.replace('$', ''));
-            return precioA - precioB;
-        }
+// Función para ordenar productos (versión simplificada)
+function ordenarProductos(clave) {
+    // Obtener los productos filtrados según la categoría actual
+    let productosFiltrados = productosData.filter(producto => {
+        return !producto.categoria || producto.categoria.toLowerCase() === catalogo;
     });
     
-    // Limpiar y reordenar
-    const contenedor = document.getElementById('contenedor-productos');
-    contenedor.innerHTML = '';
-    productosArray.forEach(producto => contenedor.appendChild(producto));
+    // Ordenar según la clave proporcionada
+    if (clave === "nombre") {
+        productosFiltrados.sort((productoA, productoB) => productoA.nombre.localeCompare(productoB.nombre));
+    } else if (clave === "precio") {
+        productosFiltrados.sort((productoA, productoB) => productoA.precio - productoB.precio);
+    }
     
-    // Reasignar eventos a los botones después de reordenar
-    document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
-        btn.addEventListener('click', function() {
-            agregarAlCarrito(this.getAttribute('data-id'));
-        });
-    });
+    // Mostrar los productos ordenados
+    mostrarProductosFiltrados(productosFiltrados);
 }
 
