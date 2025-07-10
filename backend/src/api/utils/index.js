@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////
 // Utilidades para trabajar con archivos y rutas en Express.js //
-// Compatible con ES modules
 
 // Modulos para trabajar con rutas
 import { fileURLToPath } from "url";

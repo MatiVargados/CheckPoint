@@ -134,6 +134,7 @@ body video{
     background-color: rgb(166, 38, 32);
     border: 2px solid rgb(166, 38, 32);
     border-radius: 100px;
+    cursor: pointer;
 }
 
 #boton-cambiarTema img{
@@ -235,6 +236,7 @@ body video{
     background-color: transparent;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 5px;
+    cursor: pointer;
     transition: background-color 1s ease;
 }
 
@@ -324,7 +326,7 @@ body video{
 
     padding: 4px;
     border-radius: 2px;
-    background-color: rgb(53, 50, 46);
+    background-color: rgba(53, 50, 46, 0);
 }
 
 .tarjeta-carrito div {
@@ -334,14 +336,15 @@ body video{
 
     gap: 10px;
 
-    background-color: rgb(53, 50, 46);
+    background-color: rgba(53, 50, 46, 0);
 }
 
 .tarjeta-carrito div button{
     font-size: 150%;
     color: rgb(255, 255, 255);
     border: 2px solid rgba(0, 0, 0, 0);
-    background-color: rgb(53, 50, 46);
+    background-color: rgba(53, 50, 46, 0);
+    cursor: pointer;
     transition: color 0.5s ease;
 }
 
@@ -358,6 +361,7 @@ body video{
     border: 5px solid  rgb(255, 49, 35);
     border-radius: 6px;
 
+    cursor: pointer;
     transition: background-color 0.5s ease, border 0.5s ease;
 }
 
@@ -573,7 +577,7 @@ body video{
 /* ESTILOS PARA EL TICKET */
 .ticket-div {
     position: fixed;
-    top: 0;
+    top: 0; /* marcar la posicion */
     left: 0;
     width: 100%;
     height: 100%;
@@ -581,7 +585,7 @@ body video{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000; /* para superponer elementos*/
 }
 
 .ticket-contenido {
@@ -687,7 +691,7 @@ body video{
     padding: 15px 40px;
     border-radius: 6px;
     font-size: 18px;
-    cursor: pointer;
+    cursor: pointer; /* Hace que el cursor cambie cuando algo se puede clickear*/
     transition: background-color 0.3s ease;
 }
 
@@ -727,8 +731,8 @@ body video{
     margin: 8px 0;
     color: #ffffff ;
     font-size: 13px;
-    font-weight: 400;
-    line-height: 1.4;
+    font-weight: 400; /* Lo hace mas fino */
+    line-height: 1.4; /* Es el alto entre renglones*/
 }
 
 .info-footer p strong {
@@ -808,7 +812,7 @@ body video{
 .tarjeta-carrito:hover {
     transform: translateX(5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #e0e0e0;
+    background-color: #8d5454;
 }
 
 /* Logo del carrito */

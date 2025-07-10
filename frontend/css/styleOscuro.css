@@ -134,6 +134,7 @@ body video{
     background-color: rgb(166, 38, 32);
     border: 2px solid rgb(166, 38, 32);
     border-radius: 100px;
+    cursor: pointer;
 }
 
 #boton-cambiarTema img{
@@ -237,6 +238,7 @@ body video{
     background-color: transparent;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
+    cursor: pointer;
     transition: background-color 1s ease;
 }
 
@@ -326,7 +328,7 @@ body video{
     
     padding: 4px;
     border-radius: 2px;
-    background-color: rgb(166, 38, 32);
+    background-color: rgba(166, 39, 32, 0);
 }
 
 .tarjeta-carrito div {
@@ -336,14 +338,15 @@ body video{
 
     gap: 10px;
 
-    background-color: rgb(166, 38, 32);
+    background-color: rgba(166, 39, 32, 0);
 }
 
 .tarjeta-carrito div button{
     font-size: 150%;
     color: rgb(255, 255, 255);
     border: 2px solid rgba(0, 0, 0, 0);
-    background-color: rgb(166, 38, 32);
+    background-color: rgba(166, 39, 32, 0);
+    cursor: pointer;
     transition: color 0.5s ease;
 }
 
@@ -360,6 +363,7 @@ body video{
     border: 5px solid  rgb(255, 90, 90);
     border-radius: 6px;
 
+    cursor: pointer;
     transition: background-color 0.5s ease, border 0.5s ease;
 }
 

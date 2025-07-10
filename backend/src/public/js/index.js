@@ -25,7 +25,7 @@ function mostrarProductos(array){
     htmlProductos += `
     <li class="li-listados productos-listados">
         <img src="${producto.imagen}" alt="${producto.nombre}" class="img-listados">
-        <p>Id: ${producto.id} / Nombre: ${producto.nombre}/ <strong>Precio: $  ${producto.precio}</strong></p>
+        <p>Id: ${producto.id} / Activo: ${producto.activo === 1} / Nombre: ${producto.nombre}/ <strong>Precio: $ ${producto.precio}</strong></p>
     </li>
     `;
     });

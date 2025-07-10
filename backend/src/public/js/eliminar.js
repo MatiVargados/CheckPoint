@@ -58,7 +58,7 @@ console.log(producto.imagen);
 let htmlProducto =  `
                 <div class="li-listados productos-listados">
                     <img src="${producto.imagen}" alt="${producto.nombre}" class="img-listados">
-                    <p>Id: ${producto.id} / Nombre: ${producto.nombre}/ <strong>Precio: $  ${producto.precio}</strong></p>
+                    <p>Id: ${producto.id} / Activo: ${producto.activo === 1} / Nombre: ${producto.nombre}/ <strong>Precio: $ ${producto.precio}</strong></p>
                     <input class="listados-boton" id="deleteProduct-button" type="button" value="Eliminar producto">
                 </div>  
                 `;
