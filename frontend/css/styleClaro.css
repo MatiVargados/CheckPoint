@@ -716,6 +716,7 @@ body video{
     border-top: 2px solid #000000;
     padding: 25px 0;
     margin-top: 50px;
+    margin-bottom: 0px;
     width: 100%;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
@@ -905,4 +906,23 @@ body video{
         gap: 15px;
         text-align: center;
     }
+}
+
+/* Estilos para el selector de ordenamiento */
+#ordenar {
+    background-color: white;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#ordenar:hover {
+    border-color: #ff6b6b;
+}
+
+#ordenar:focus {
+    outline: none;
+    border-color: #a62620;
+    box-shadow: 0 0 5px rgba(166, 38, 32, 0.3);
 }
