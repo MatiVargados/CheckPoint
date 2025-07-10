@@ -222,5 +222,43 @@ botonCambiarTema.addEventListener("click", function() {
 // Inicializar la página
 document.addEventListener('DOMContentLoaded', function() {
     cargarProductos();
+    
+    // Agregar event listener para el ordenamiento
+    const selectOrdenar = document.getElementById('ordenar');
+    if (selectOrdenar) {
+        selectOrdenar.addEventListener('change', ordenarProductos);
+    }
 });
+
+// Función para ordenar productos
+function ordenarProductos() {
+    const orden = document.getElementById('ordenar').value;
+    const productos = document.querySelectorAll('#contenedor-productos li');
+    const productosArray = Array.from(productos);
+    
+    productosArray.sort((a, b) => {
+        if (orden === 'nombre') {
+            const nombreA = a.querySelector('h1').textContent;
+            const nombreB = b.querySelector('h1').textContent;
+            return nombreA.localeCompare(nombreB);
+        }
+        if (orden === 'precio') {
+            const precioA = parseInt(a.querySelector('p').textContent.replace('$', ''));
+            const precioB = parseInt(b.querySelector('p').textContent.replace('$', ''));
+            return precioA - precioB;
+        }
+    });
+    
+    // Limpiar y reordenar
+    const contenedor = document.getElementById('contenedor-productos');
+    contenedor.innerHTML = '';
+    productosArray.forEach(producto => contenedor.appendChild(producto));
+    
+    // Reasignar eventos a los botones después de reordenar
+    document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
+        btn.addEventListener('click', function() {
+            agregarAlCarrito(this.getAttribute('data-id'));
+        });
+    });
+}
 
