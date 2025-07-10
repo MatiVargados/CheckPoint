@@ -958,6 +958,45 @@ body video{
     transform: scale(1.05);
 }
 
+/* FOOTER */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(166, 38, 32);
+    border-top: 2px solid #000000;
+    padding: 25px 0;
+    margin-top: 50px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.contenido-footer {
+    max-width: 1200px;
+    margin: 0;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.info-footer p {
+    margin: 8px 0;
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.info-footer p strong {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.info-footer p:last-child {
+    margin-top: 15px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
 .saludo-usuario {
     transition: all 0.3s ease;
 }
