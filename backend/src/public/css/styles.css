@@ -3,32 +3,40 @@
 ///////////// */
 h1 {
     text-align: center;
+    color: rgb(255, 255, 255);
 }
 
+body {
+    background-color: rgb(53, 50, 46);
+    color: rgb(255, 255, 255);
+}
 
 /* /////////////
     Header
 ///////////// */
 
 .listado-nav {
-    border: 2px solid #e3bc5e;
+    border: 2px solid rgb(166, 38, 32);
     display: flex;
     justify-content: space-around;
+    background-color: rgb(53, 50, 46);
 }
 
 .listado-nav li {
     list-style-type: none;
+    color: rgb(255, 255, 255);
 }
 
 .listado-api {
-  border: 2px solid #388bfd;
+  border: 2px solid rgb(166, 38, 32);
   font-size: 11px;
+  background-color: rgb(53, 50, 46);
+  color: rgb(255, 255, 255);
 }
 
 .listado-api span {
-  color: #388bfd;
+  color: rgb(166, 38, 32);
 }
-
 
 /* /////////////
     index
@@ -36,12 +44,14 @@ h1 {
 .li-listados {
     display: flex;
     align-items: center;
-    border: 2px solid #e3bc5e;
+    border: 2px solid rgb(166, 38, 32);
     font-size: 16px;
     padding-right: 10px;
     border-radius: 3px;
     padding-top: 15px;
     padding-bottom: 15px;
+    background-color: rgb(53, 50, 46);
+    color: rgb(255, 255, 255);
 }
 
 .productos-listados {
@@ -51,7 +61,6 @@ h1 {
 .img-listados {
     width: 65px;
 }
-
 
 /* ===============================
         LISTADOS DINAMICOS
@@ -63,6 +72,7 @@ h1 {
 
 .li-listados_datos p, .listados_boton {
     margin: 0 !important;
+    color: rgb(255, 255, 255);
 }
 
 .li-listados_datos {
@@ -72,9 +82,10 @@ h1 {
     align-items: center;
 }
 
-
 #updateForm-container {
     width: 50%;
     margin: 0 auto;
     margin-top: 60px;
+    background-color: rgb(53, 50, 46);
+    color: rgb(255, 255, 255);
 }
